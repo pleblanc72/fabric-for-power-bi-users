@@ -27,6 +27,7 @@
 
 | Resource | Description |
 |----------|-------------|
+| [📝 Slide Content](./slides/slides-content.md) | Key concepts from the presentation |
 | [🎬 Demo Design](./demos/demo-design.md) | Demo script & setup |
 | [🧪 Lab: Copilot Exploration](./lab/copilot-exploration.md) | Hands-on exercise |
 

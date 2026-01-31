@@ -27,6 +27,7 @@
 
 | Resource | Description |
 |----------|-------------|
+| [📝 Slide Content](./slides/slides-content.md) | Key concepts from the presentation |
 | [🎬 Demo Design](./demos/demo-design.md) | Demo script & setup |
 | [🧪 Lab: Dataflow & Pipeline](./lab/dataflow-pipeline.md) | Hands-on exercise |
 
