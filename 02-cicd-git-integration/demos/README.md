@@ -1,5 +1,9 @@
 # Demos: CI/CD & Git Integration
 
+[← Back to Section 2: CI/CD & Git Integration](../README.md)
+
+---
+
 ## Demo 1: Connect Workspace to GitHub
 
 ### Setup Required

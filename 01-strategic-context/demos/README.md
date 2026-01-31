@@ -1,5 +1,9 @@
 # Demos: Strategic Context
 
+[← Back to Section 1: Strategic Context](../README.md)
+
+---
+
 ## Demo 1: Capacity Metrics Comparison
 
 ### Setup Required

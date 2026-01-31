@@ -1,5 +1,9 @@
 # Demos: Direct Lake
 
+[← Back to Section 5: Direct Lake](../README.md)
+
+---
+
 ## Demo 1: Create a Direct Lake Semantic Model
 
 ### Setup Required

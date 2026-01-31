@@ -1,5 +1,9 @@
 # Demos: Copilot
 
+[← Back to Section 7: Copilot](../README.md)
+
+---
+
 ## Important Note
 
 Copilot availability depends on:

@@ -1,5 +1,9 @@
 # Demos: Data Centralization
 
+[← Back to Section 3: Data Centralization](../README.md)
+
+---
+
 ## Demo 1: Create a Lakehouse
 
 ### Setup Required

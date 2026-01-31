@@ -1,5 +1,9 @@
 # Demos: Dataflows Gen2 & Pipelines
 
+[← Back to Section 4: Dataflows & Pipelines](../README.md)
+
+---
+
 ## Demo 1: Build a Dataflow Gen2
 
 ### Setup Required
