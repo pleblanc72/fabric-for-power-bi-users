@@ -16,6 +16,9 @@ Thumbs.db
 **/slides-gamma.md
 **/slides.md
 
+# Slides folders (keep private, share PDFs instead)
+**/slides/
+
 # PowerPoint files (intermediate format)
 **/*.pptx
 
