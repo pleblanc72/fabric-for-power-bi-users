@@ -23,6 +23,19 @@
 
 ---
 
+## 📂 Section Contents
+
+| Resource | Description |
+|----------|-------------|
+| [📊 Slides (PDF)](./pdf/02-cicd-git-integration.pdf) | Presentation slides |
+| [📊 Slides (PPTX)](./slides/02-cicd-git-integration.pptx) | Editable PowerPoint |
+| [🎤 Talking Points](./slides/talking-points.md) | Speaker notes |
+| [🎬 Demo Design](./demos/demo-design.md) | Demo script & setup |
+| [🔧 Technical Setup](./demos/TECHNICAL-SETUP.md) | Environment setup |
+| [🧪 Lab: Git Workflow](./lab/git-workflow.md) | Hands-on exercise |
+
+---
+
 ## Overview
 
 | | |

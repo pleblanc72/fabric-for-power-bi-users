@@ -23,6 +23,18 @@
 
 ---
 
+## 📂 Section Contents
+
+| Resource | Description |
+|----------|-------------|
+| [📊 Slides (PDF)](./pdf/03-OneLake.pdf) | Presentation slides |
+| [📊 Slides (PPTX)](./slides/03-OneLake.pptx) | Editable PowerPoint |
+| [🎤 Talking Points](./slides/talking-points.md) | Speaker notes |
+| [🎬 Demo Design](./demos/demo-design.md) | Demo script & setup |
+| [🧪 Lab: Lakehouse Basics](./lab/lakehouse-basics.md) | Hands-on exercise |
+
+---
+
 ## Overview
 
 | | |

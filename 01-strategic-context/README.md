@@ -23,6 +23,17 @@
 
 ---
 
+## 📂 Section Contents
+
+| Resource | Description |
+|----------|-------------|
+| [📊 Slides (PDF)](./pdf/01-Strategic%20Context.pdf) | Presentation slides |
+| [📊 Slides (PPTX)](./slides/01-Strategic%20Context.pptx) | Editable PowerPoint |
+| [🎤 Talking Points](./slides/talking-points.md) | Speaker notes |
+| [🧪 Lab: Scenario Assessment](./lab/scenario-assessment.md) | Hands-on exercise |
+
+---
+
 ## Overview
 
 | | |
