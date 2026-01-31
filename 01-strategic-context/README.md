@@ -28,6 +28,7 @@
 | Resource | Description |
 |----------|-------------|
 | [📊 Slides (PDF)](./pdf/01-Strategic%20Context.pdf) | Presentation slides |
+| [⬇️ Download PDF](https://github.com/pleblanc72/fabric-for-power-bi-users/raw/main/01-strategic-context/pdf/01-Strategic%20Context.pdf) | 2.9 MB · Jan 2026 |
 | [📝 Slide Content](./slides/slides-content.md) | Key concepts from the presentation |
 | [🧪 Lab: Scenario Assessment](./lab/scenario-assessment.md) | Hands-on exercise |
 
