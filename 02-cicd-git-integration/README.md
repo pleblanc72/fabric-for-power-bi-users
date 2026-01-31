@@ -4,6 +4,26 @@
 
 ---
 
+| [← Previous: Strategic Context](../01-strategic-context/README.md) | [🏠 Home](../README.md) | [Next: Data Centralization →](../03-data-centralization/README.md) |
+|:--|:--:|--:|
+
+---
+
+## Workshop Sections
+
+| # | Section | Duration | |
+|---|---------|----------|--|
+| 01 | [Strategic Context](../01-strategic-context/README.md) | 45 min | |
+| **02** | **CI/CD & Git Integration** | **45 min** | ⬅️ You are here |
+| 03 | [Data Centralization](../03-data-centralization/README.md) | 60 min | |
+| 04 | [Dataflows & Pipelines](../04-dataflows-pipelines/README.md) | 60 min | |
+| 05 | [Direct Lake](../05-direct-lake/README.md) | 45 min | |
+| 06 | [Security](../06-security/README.md) | 40 min | |
+| 07 | [Copilot](../07-copilot/README.md) | 45 min | |
+| 08 | [Semantic Link](../08-semantic-link-optional/README.md) | 30 min | *(Optional)* |
+
+---
+
 ## Overview
 
 | | |
@@ -148,3 +168,8 @@ This section can be delivered as a standalone session for teams focused on DevOp
 ├── demos/              # Demo scripts and sample repo structure
 └── lab/                # Hands-on Git workflow exercise
 ```
+
+---
+
+| [← Previous: Strategic Context](../01-strategic-context/README.md) | [🏠 Home](../README.md) | [Next: Data Centralization →](../03-data-centralization/README.md) |
+|:--|:--:|--:|

@@ -4,6 +4,26 @@
 
 ---
 
+| [← Previous: CI/CD & Git Integration](../02-cicd-git-integration/README.md) | [🏠 Home](../README.md) | [Next: Dataflows & Pipelines →](../04-dataflows-pipelines/README.md) |
+|:--|:--:|--:|
+
+---
+
+## Workshop Sections
+
+| # | Section | Duration | |
+|---|---------|----------|--|
+| 01 | [Strategic Context](../01-strategic-context/README.md) | 45 min | |
+| 02 | [CI/CD & Git Integration](../02-cicd-git-integration/README.md) | 45 min | |
+| **03** | **Data Centralization** | **60 min** | ⬅️ You are here |
+| 04 | [Dataflows & Pipelines](../04-dataflows-pipelines/README.md) | 60 min | |
+| 05 | [Direct Lake](../05-direct-lake/README.md) | 45 min | |
+| 06 | [Security](../06-security/README.md) | 40 min | |
+| 07 | [Copilot](../07-copilot/README.md) | 45 min | |
+| 08 | [Semantic Link](../08-semantic-link-optional/README.md) | 30 min | *(Optional)* |
+
+---
+
 ## Overview
 
 | | |
@@ -176,3 +196,8 @@ This section is foundational for understanding Fabric's data architecture. It ca
 ├── demos/              # Demo scripts and sample data
 └── lab/                # Lakehouse creation exercise
 ```
+
+---
+
+| [← Previous: CI/CD & Git Integration](../02-cicd-git-integration/README.md) | [🏠 Home](../README.md) | [Next: Dataflows & Pipelines →](../04-dataflows-pipelines/README.md) |
+|:--|:--:|--:|

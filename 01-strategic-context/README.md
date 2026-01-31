@@ -4,6 +4,26 @@
 
 ---
 
+| [🏠 Home](../README.md) | [Next: CI/CD & Git Integration →](../02-cicd-git-integration/README.md) |
+|:--|--:|
+
+---
+
+## Workshop Sections
+
+| # | Section | Duration | |
+|---|---------|----------|--|
+| **01** | **Strategic Context** | **45 min** | ⬅️ You are here |
+| 02 | [CI/CD & Git Integration](../02-cicd-git-integration/README.md) | 45 min | |
+| 03 | [Data Centralization](../03-data-centralization/README.md) | 60 min | |
+| 04 | [Dataflows & Pipelines](../04-dataflows-pipelines/README.md) | 60 min | |
+| 05 | [Direct Lake](../05-direct-lake/README.md) | 45 min | |
+| 06 | [Security](../06-security/README.md) | 40 min | |
+| 07 | [Copilot](../07-copilot/README.md) | 45 min | |
+| 08 | [Semantic Link](../08-semantic-link-optional/README.md) | 30 min | *(Optional)* |
+
+---
+
 ## Overview
 
 | | |
@@ -203,6 +223,11 @@ Reinforce the five key messages:
 - [Microsoft Fabric Pricing](https://azure.microsoft.com/pricing/details/microsoft-fabric/)
 - [Fabric Capacity Planning](https://learn.microsoft.com/fabric/enterprise/plan-capacity)
 - [Pro vs Premium vs Fabric Comparison](https://learn.microsoft.com/power-bi/fundamentals/service-features-license-type)
+
+---
+
+| [🏠 Home](../README.md) | [Next: CI/CD & Git Integration →](../02-cicd-git-integration/README.md) |
+|:--|--:|
 
 ---
 
