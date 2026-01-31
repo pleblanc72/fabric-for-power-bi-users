@@ -27,9 +27,7 @@
 
 | Resource | Description |
 |----------|-------------|
-| [📊 Slides (PDF)](./pdf/03-OneLake.pdf) | Presentation slides |
-| [📊 Slides (PPTX)](./slides/03-OneLake.pptx) | Editable PowerPoint |
-| [🎤 Talking Points](./slides/talking-points.md) | Speaker notes |
+| [📊 Slides (PDF)](https://github.com/pleblanc72/fabric-for-power-bi-users/raw/main/03-data-centralization/pdf/03-OneLake.pdf) | Presentation slides |
 | [🎬 Demo Design](./demos/demo-design.md) | Demo script & setup |
 | [🧪 Lab: Lakehouse Basics](./lab/lakehouse-basics.md) | Hands-on exercise |
 

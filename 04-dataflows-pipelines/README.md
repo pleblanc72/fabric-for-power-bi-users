@@ -27,8 +27,6 @@
 
 | Resource | Description |
 |----------|-------------|
-| [📊 Slides (PPTX)](./slides/04-dataflows-pipelines.pptx) | Editable PowerPoint |
-| [🎤 Talking Points](./slides/talking-points.md) | Speaker notes |
 | [🎬 Demo Design](./demos/demo-design.md) | Demo script & setup |
 | [🧪 Lab: Dataflow & Pipeline](./lab/dataflow-pipeline.md) | Hands-on exercise |
 

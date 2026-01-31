@@ -27,8 +27,6 @@
 
 | Resource | Description |
 |----------|-------------|
-| [📊 Slides (PPTX)](./slides/07-copilot.pptx) | Editable PowerPoint |
-| [🎤 Talking Points](./slides/talking-points.md) | Speaker notes |
 | [🎬 Demo Design](./demos/demo-design.md) | Demo script & setup |
 | [🧪 Lab: Copilot Exploration](./lab/copilot-exploration.md) | Hands-on exercise |
 

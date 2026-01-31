@@ -27,8 +27,6 @@
 
 | Resource | Description |
 |----------|-------------|
-| [📊 Slides (PPTX)](./slides/05-direct-lake.pptx) | Editable PowerPoint |
-| [🎤 Talking Points](./slides/talking-points.md) | Speaker notes |
 | [🎬 Demo Design](./demos/demo-design.md) | Demo script & setup |
 | [🧪 Lab: Direct Lake Model](./lab/direct-lake-model.md) | Hands-on exercise |
 

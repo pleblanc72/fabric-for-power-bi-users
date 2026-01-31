@@ -27,8 +27,6 @@
 
 | Resource | Description |
 |----------|-------------|
-| [📊 Slides (PPTX)](./slides/06-security.pptx) | Editable PowerPoint |
-| [🎤 Talking Points](./slides/talking-points.md) | Speaker notes |
 | [🎬 Demo Design](./demos/demo-design.md) | Demo script & setup |
 | [🧪 Lab: Security Implementation](./lab/security-implementation.md) | Hands-on exercise |
 

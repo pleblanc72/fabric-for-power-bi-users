@@ -27,9 +27,7 @@
 
 | Resource | Description |
 |----------|-------------|
-| [📊 Slides (PDF)](./pdf/01-Strategic%20Context.pdf) | Presentation slides |
-| [📊 Slides (PPTX)](./slides/01-Strategic%20Context.pptx) | Editable PowerPoint |
-| [🎤 Talking Points](./slides/talking-points.md) | Speaker notes |
+| [📊 Slides (PDF)](https://github.com/pleblanc72/fabric-for-power-bi-users/raw/main/01-strategic-context/pdf/01-Strategic%20Context.pdf) | Presentation slides |
 | [🧪 Lab: Scenario Assessment](./lab/scenario-assessment.md) | Hands-on exercise |
 
 ---
