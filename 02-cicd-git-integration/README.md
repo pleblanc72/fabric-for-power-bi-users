@@ -27,7 +27,7 @@
 
 | Resource | Description |
 |----------|-------------|
-| [📊 Slides (PDF)](https://github.com/pleblanc72/fabric-for-power-bi-users/blob/main/02-cicd-git-integration/pdf/02-cicd-git-integration.pdf) | Presentation slides |
+| [📊 Slides (PDF)](./pdf/02-cicd-git-integration.pdf) | Presentation slides |
 | [🎬 Demo Design](./demos/demo-design.md) | Demo script & setup |
 | [🔧 Technical Setup](./demos/TECHNICAL-SETUP.md) | Environment setup |
 | [🧪 Lab: Git Workflow](./lab/git-workflow.md) | Hands-on exercise |

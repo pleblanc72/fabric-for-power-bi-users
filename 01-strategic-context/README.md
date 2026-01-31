@@ -27,7 +27,7 @@
 
 | Resource | Description |
 |----------|-------------|
-| [📊 Slides (PDF)](https://github.com/pleblanc72/fabric-for-power-bi-users/blob/main/01-strategic-context/pdf/01-Strategic%20Context.pdf) | Presentation slides |
+| [📊 Slides (PDF)](./pdf/01-Strategic%20Context.pdf) | Presentation slides |
 | [🧪 Lab: Scenario Assessment](./lab/scenario-assessment.md) | Hands-on exercise |
 
 ---
