@@ -28,6 +28,7 @@
 | Resource | Description |
 |----------|-------------|
 | [📊 Slides (PDF)](./pdf/01-Strategic%20Context.pdf) | Presentation slides |
+| [📝 Slide Content](./slides/slides-content.md) | Key concepts from the presentation |
 | [🧪 Lab: Scenario Assessment](./lab/scenario-assessment.md) | Hands-on exercise |
 
 ---

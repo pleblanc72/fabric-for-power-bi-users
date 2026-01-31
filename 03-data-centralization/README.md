@@ -28,6 +28,7 @@
 | Resource | Description |
 |----------|-------------|
 | [📊 Slides (PDF)](./pdf/03-OneLake.pdf) | Presentation slides |
+| [📝 Slide Content](./slides/slides-content.md) | Key concepts from the presentation |
 | [🎬 Demo Design](./demos/demo-design.md) | Demo script & setup |
 | [🧪 Lab: Lakehouse Basics](./lab/lakehouse-basics.md) | Hands-on exercise |
 

@@ -15,9 +15,13 @@ Thumbs.db
 # Slide source files (keep private, share PDFs instead)
 **/slides-gamma.md
 **/slides.md
+**/talking-points.md
 
 # Slides folders (keep private, share PDFs instead)
 **/slides/
+
+# Exception: slides-content.md is public-facing reference material
+!**/slides/slides-content.md
 
 # PowerPoint files (intermediate format)
 **/*.pptx
