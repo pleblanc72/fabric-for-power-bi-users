@@ -1,0 +1,75 @@
+/// SupplierCosts table
+/// Contains actual invoiced costs from suppliers (used in Sections 03-06)
+
+table SupplierCosts
+    lineageTag: tbl-suppliercosts
+    
+    /// Data source: CSV file uploaded to Lakehouse or via Shortcut Transformation
+    /// Contains ACTUAL costs vs BUDGETED costs in Products table
+    
+    partition SupplierCosts = m
+        mode: directLake
+        source =
+            let
+                Source = Lakehouse.Contents(null){[workspaceId = "YOUR_WORKSPACE_ID"]}[Data]{[lakehouseId = "YOUR_LAKEHOUSE_ID"]}[Data],
+                SupplierCosts = Source{[Name = "suppliercosts"]}[Data]
+            in
+                SupplierCosts
+
+    column ProductID
+        dataType: string
+        lineageTag: col-sc-productid
+        summarizeBy: none
+        sourceColumn: ProductID
+        
+        annotation Description = "Foreign key to Products table"
+
+    column SupplierID
+        dataType: string
+        lineageTag: col-sc-supplierid
+        summarizeBy: none
+        sourceColumn: SupplierID
+        
+        annotation Description = "Unique supplier identifier"
+
+    column SupplierName
+        dataType: string
+        lineageTag: col-sc-suppliername
+        summarizeBy: none
+        sourceColumn: SupplierName
+        
+        annotation Description = "Supplier company name"
+
+    column SupplierCost
+        dataType: decimal
+        lineageTag: col-sc-suppliercost
+        summarizeBy: sum
+        sourceColumn: SupplierCost
+        formatString: "$#,0.00"
+        
+        annotation Description = "Actual invoiced cost from supplier (confidential - executives only)"
+
+    column LeadTimeDays
+        dataType: int64
+        lineageTag: col-sc-leadtime
+        summarizeBy: average
+        sourceColumn: LeadTimeDays
+        
+        annotation Description = "Delivery lead time in days"
+
+    column MinOrderQty
+        dataType: int64
+        lineageTag: col-sc-minorderqty
+        summarizeBy: sum
+        sourceColumn: MinOrderQty
+        
+        annotation Description = "Minimum order quantity required"
+
+    column LastUpdated
+        dataType: dateTime
+        lineageTag: col-sc-lastupdated
+        summarizeBy: none
+        sourceColumn: LastUpdated
+        formatString: "yyyy-mm-dd"
+        
+        annotation Description = "Date of last price update from supplier"

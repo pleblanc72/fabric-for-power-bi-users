@@ -1,0 +1,185 @@
+/// Measures table
+/// All DAX measures for the Sales Analytics model
+
+table _Measures
+    lineageTag: measures-001
+    
+    /// Display folder organization:
+    /// - Revenue
+    /// - Costs & Margin  
+    /// - Quantity
+    /// - Time Intelligence
+    /// - Targets
+    
+    // ============================================
+    // REVENUE MEASURES
+    // ============================================
+    
+    measure 'Total Revenue' =
+        SUM(Sales[TotalAmount])
+        formatString: "$#,0.00"
+        displayFolder: Revenue
+        lineageTag: m-revenue
+        
+        annotation Description = "Sum of all sales transaction amounts after discounts"
+
+    measure 'Total Discount' =
+        SUM(Sales[Discount]) * SUM(Sales[Quantity])
+        formatString: "$#,0.00"
+        displayFolder: Revenue
+        lineageTag: m-discount
+        
+        annotation Description = "Total discount amount given across all transactions"
+
+    measure 'Gross Revenue' =
+        SUMX(Sales, Sales[UnitPrice] * Sales[Quantity])
+        formatString: "$#,0.00"
+        displayFolder: Revenue
+        lineageTag: m-gross-revenue
+        
+        annotation Description = "Revenue before discounts"
+
+    measure 'Avg Transaction Value' =
+        DIVIDE([Total Revenue], [Total Transactions])
+        formatString: "$#,0.00"
+        displayFolder: Revenue
+        lineageTag: m-atv
+        
+        annotation Description = "Average revenue per transaction"
+
+    // ============================================
+    // COST & MARGIN MEASURES
+    // ============================================
+
+    measure 'Total Cost' =
+        SUM(Sales[TotalCost])
+        formatString: "$#,0.00"
+        displayFolder: Costs & Margin
+        lineageTag: m-cost
+        
+        annotation Description = "Total cost of goods sold"
+
+    measure 'Gross Profit' =
+        [Total Revenue] - [Total Cost]
+        formatString: "$#,0.00"
+        displayFolder: Costs & Margin
+        lineageTag: m-profit
+        
+        annotation Description = "Revenue minus cost of goods sold"
+
+    measure 'Gross Margin %' =
+        DIVIDE([Gross Profit], [Total Revenue])
+        formatString: "0.0%"
+        displayFolder: Costs & Margin
+        lineageTag: m-margin-pct
+        
+        annotation Description = "Gross profit as percentage of revenue"
+
+    // ============================================
+    // QUANTITY MEASURES
+    // ============================================
+
+    measure 'Total Quantity' =
+        SUM(Sales[Quantity])
+        formatString: "#,0"
+        displayFolder: Quantity
+        lineageTag: m-qty
+        
+        annotation Description = "Total units sold"
+
+    measure 'Total Transactions' =
+        COUNTROWS(Sales)
+        formatString: "#,0"
+        displayFolder: Quantity
+        lineageTag: m-txn-count
+        
+        annotation Description = "Count of sales transactions"
+
+    measure 'Avg Units per Transaction' =
+        DIVIDE([Total Quantity], [Total Transactions])
+        formatString: "0.00"
+        displayFolder: Quantity
+        lineageTag: m-units-per-txn
+
+    // ============================================
+    // TIME INTELLIGENCE MEASURES
+    // ============================================
+
+    measure 'Revenue YTD' =
+        TOTALYTD([Total Revenue], Calendar[Date])
+        formatString: "$#,0.00"
+        displayFolder: Time Intelligence
+        lineageTag: m-ytd
+        
+        annotation Description = "Year-to-date revenue"
+
+    measure 'Revenue MTD' =
+        TOTALMTD([Total Revenue], Calendar[Date])
+        formatString: "$#,0.00"
+        displayFolder: Time Intelligence
+        lineageTag: m-mtd
+        
+        annotation Description = "Month-to-date revenue"
+
+    measure 'Revenue PY' =
+        CALCULATE([Total Revenue], SAMEPERIODLASTYEAR(Calendar[Date]))
+        formatString: "$#,0.00"
+        displayFolder: Time Intelligence
+        lineageTag: m-py
+        
+        annotation Description = "Prior year revenue for same period"
+
+    measure 'Revenue YoY %' =
+        VAR CurrentPeriod = [Total Revenue]
+        VAR PriorPeriod = [Revenue PY]
+        RETURN
+            DIVIDE(CurrentPeriod - PriorPeriod, PriorPeriod)
+        formatString: "0.0%"
+        displayFolder: Time Intelligence
+        lineageTag: m-yoy-pct
+        
+        annotation Description = "Year-over-year revenue growth percentage"
+
+    measure 'Revenue vs PY' =
+        [Total Revenue] - [Revenue PY]
+        formatString: "$#,0.00"
+        displayFolder: Time Intelligence
+        lineageTag: m-vs-py
+        
+        annotation Description = "Revenue change from prior year"
+
+    // ============================================
+    // TARGET MEASURES
+    // ============================================
+
+    measure 'Revenue Target' =
+        SUM(Targets[RevenueTarget])
+        formatString: "$#,0.00"
+        displayFolder: Targets
+        lineageTag: m-target
+        
+        annotation Description = "Revenue target amount"
+
+    measure 'Revenue vs Target' =
+        [Total Revenue] - [Revenue Target]
+        formatString: "$#,0.00"
+        displayFolder: Targets
+        lineageTag: m-vs-target
+        
+        annotation Description = "Revenue variance to target"
+
+    measure 'Revenue vs Target %' =
+        DIVIDE([Total Revenue] - [Revenue Target], [Revenue Target])
+        formatString: "0.0%"
+        displayFolder: Targets
+        lineageTag: m-vs-target-pct
+        
+        annotation Description = "Revenue variance to target as percentage"
+
+    measure '% of Target' =
+        DIVIDE([Total Revenue], [Revenue Target])
+        formatString: "0.0%"
+        displayFolder: Targets
+        lineageTag: m-pct-target
+        
+        annotation Description = "Revenue as percentage of target achieved"

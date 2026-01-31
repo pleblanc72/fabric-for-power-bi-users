@@ -1,0 +1,55 @@
+/// Stores dimension table
+/// 12 retail locations across Pacific Northwest and Mountain regions
+
+table Stores
+    lineageTag: stores-001
+
+    column StoreID
+        dataType: string
+        isKey: true
+        lineageTag: store-id
+
+    column StoreName
+        dataType: string
+        lineageTag: store-name
+
+    column City
+        dataType: string
+        lineageTag: store-city
+
+    column State
+        dataType: string
+        lineageTag: store-state
+
+    column Region
+        dataType: string
+        lineageTag: store-region
+
+    column OpenDate
+        dataType: dateTime
+        formatString: Short Date
+        lineageTag: store-open
+
+    column SquareFeet
+        dataType: int64
+        formatString: #,0
+        lineageTag: store-sqft
+
+    column ManagerName
+        dataType: string
+        lineageTag: store-manager
+
+    hierarchy 'Store Geography'
+        lineageTag: store-geo-hier
+
+        level Region
+            column: Region
+
+        level State
+            column: State
+
+        level City
+            column: City
+
+        level StoreName
+            column: StoreName

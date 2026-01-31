@@ -1,0 +1,72 @@
+/// Calendar dimension table
+/// Standard date dimension with fiscal calendar support
+
+table Calendar
+    lineageTag: calendar-001
+
+    column Date
+        dataType: dateTime
+        isKey: true
+        formatString: Short Date
+        lineageTag: cal-date
+
+    column Year
+        dataType: int64
+        lineageTag: cal-year
+
+    column Quarter
+        dataType: string
+        lineageTag: cal-quarter
+
+    column Month
+        dataType: int64
+        lineageTag: cal-month
+
+    column MonthName
+        dataType: string
+        lineageTag: cal-monthname
+        sortByColumn: Month
+
+    column WeekOfYear
+        dataType: int64
+        lineageTag: cal-week
+
+    column DayOfWeek
+        dataType: int64
+        lineageTag: cal-dow
+
+    column DayName
+        dataType: string
+        lineageTag: cal-dayname
+        sortByColumn: DayOfWeek
+
+    column IsWeekend
+        dataType: boolean
+        lineageTag: cal-weekend
+
+    column IsHoliday
+        dataType: boolean
+        lineageTag: cal-holiday
+
+    column FiscalYear
+        dataType: string
+        lineageTag: cal-fy
+
+    column FiscalQuarter
+        dataType: string
+        lineageTag: cal-fq
+
+    hierarchy 'Date Hierarchy'
+        lineageTag: cal-hier
+
+        level Year
+            column: Year
+
+        level Quarter
+            column: Quarter
+
+        level Month
+            column: MonthName
+
+        level Date
+            column: Date

@@ -1,0 +1,67 @@
+ProductID,ProductName,Category,SubCategory,UnitPrice,UnitCost,IsActive
+1001,Trail Runner Pro,Footwear,Running Shoes,129.99,52.00,TRUE
+1002,Summit Hiker,Footwear,Hiking Boots,189.99,76.00,TRUE
+1003,Urban Walker,Footwear,Casual Shoes,79.99,32.00,TRUE
+1004,Grip Master Sandal,Footwear,Sandals,59.99,24.00,TRUE
+1005,Winter Trek Boot,Footwear,Winter Boots,219.99,88.00,TRUE
+1006,Sprint Elite,Footwear,Running Shoes,149.99,60.00,TRUE
+1007,All-Terrain Mid,Footwear,Hiking Boots,159.99,64.00,TRUE
+1008,Classic Canvas,Footwear,Casual Shoes,49.99,20.00,TRUE
+2001,Ultralight Tent 2P,Camping,Tents,349.99,140.00,TRUE
+2002,Family Dome 6P,Camping,Tents,449.99,180.00,TRUE
+2003,Compact Sleep Bag,Camping,Sleeping Bags,129.99,52.00,TRUE
+2004,Arctic Sleep Bag,Camping,Sleeping Bags,249.99,100.00,TRUE
+2005,Quick Setup Canopy,Camping,Shelters,199.99,80.00,TRUE
+2006,Trekking Poles Set,Camping,Accessories,79.99,32.00,TRUE
+2007,LED Headlamp Pro,Camping,Lighting,44.99,18.00,TRUE
+2008,Camp Chair Deluxe,Camping,Furniture,89.99,36.00,TRUE
+2009,Portable Stove,Camping,Cooking,69.99,28.00,TRUE
+2010,Water Filter System,Camping,Hydration,49.99,20.00,TRUE
+3001,Performance Tee,Apparel,Tops,39.99,16.00,TRUE
+3002,Fleece Pullover,Apparel,Tops,79.99,32.00,TRUE
+3003,Rain Shell Jacket,Apparel,Outerwear,149.99,60.00,TRUE
+3004,Down Insulated Jacket,Apparel,Outerwear,229.99,92.00,TRUE
+3005,Hiking Pants,Apparel,Bottoms,69.99,28.00,TRUE
+3006,Quick-Dry Shorts,Apparel,Bottoms,49.99,20.00,TRUE
+3007,Merino Base Layer,Apparel,Base Layers,89.99,36.00,TRUE
+3008,Sport Socks 3-Pack,Apparel,Accessories,24.99,10.00,TRUE
+3009,Sun Hat Wide Brim,Apparel,Accessories,34.99,14.00,TRUE
+3010,Winter Beanie,Apparel,Accessories,29.99,12.00,TRUE
+4001,Mountain Bike 27.5,Cycling,Bikes,899.99,450.00,TRUE
+4002,Road Bike Carbon,Cycling,Bikes,1499.99,750.00,TRUE
+4003,Kids Bike 20in,Cycling,Bikes,299.99,150.00,TRUE
+4004,Bike Helmet Adult,Cycling,Safety,79.99,32.00,TRUE
+4005,Bike Lock Heavy Duty,Cycling,Accessories,49.99,20.00,TRUE
+4006,Cycling Gloves,Cycling,Apparel,34.99,14.00,TRUE
+4007,Bike Repair Kit,Cycling,Tools,29.99,12.00,TRUE
+4008,Water Bottle Cage,Cycling,Accessories,14.99,6.00,TRUE
+5001,Kayak Single 10ft,Water Sports,Kayaks,649.99,260.00,TRUE
+5002,Kayak Tandem 12ft,Water Sports,Kayaks,899.99,360.00,TRUE
+5003,Paddle Adjustable,Water Sports,Paddles,89.99,36.00,TRUE
+5004,Life Vest Adult,Water Sports,Safety,69.99,28.00,TRUE
+5005,Dry Bag 20L,Water Sports,Storage,39.99,16.00,TRUE
+5006,Snorkel Set,Water Sports,Snorkeling,49.99,20.00,TRUE
+5007,Beach Towel XL,Water Sports,Accessories,29.99,12.00,TRUE
+6001,Yoga Mat Premium,Fitness,Yoga,49.99,20.00,TRUE
+6002,Resistance Bands Set,Fitness,Strength,29.99,12.00,TRUE
+6003,Dumbbell Set 50lb,Fitness,Weights,149.99,60.00,TRUE
+6004,Kettlebell 25lb,Fitness,Weights,59.99,24.00,TRUE
+6005,Jump Rope Speed,Fitness,Cardio,19.99,8.00,TRUE
+6006,Exercise Ball 65cm,Fitness,Accessories,34.99,14.00,TRUE
+6007,Foam Roller,Fitness,Recovery,29.99,12.00,TRUE
+6008,Fitness Tracker Band,Fitness,Electronics,99.99,40.00,TRUE
+7001,Ski Package Adult,Winter Sports,Skiing,599.99,240.00,TRUE
+7002,Snowboard Complete,Winter Sports,Snowboarding,449.99,180.00,TRUE
+7003,Ski Goggles Pro,Winter Sports,Accessories,89.99,36.00,TRUE
+7004,Snow Gloves Insulated,Winter Sports,Apparel,59.99,24.00,TRUE
+7005,Ski Poles Aluminum,Winter Sports,Skiing,49.99,20.00,TRUE
+7006,Snowshoes Adult,Winter Sports,Snowshoeing,179.99,72.00,TRUE
+7007,Hand Warmers 10-Pack,Winter Sports,Accessories,14.99,6.00,TRUE
+8001,Backpack 40L,Bags,Hiking Packs,129.99,52.00,TRUE
+8002,Backpack 65L,Bags,Hiking Packs,179.99,72.00,TRUE
+8003,Daypack 25L,Bags,Daypacks,79.99,32.00,TRUE
+8004,Hydration Pack,Bags,Hydration,99.99,40.00,TRUE
+8005,Duffel Bag Large,Bags,Travel,89.99,36.00,TRUE
+8006,Waist Pack,Bags,Accessories,34.99,14.00,TRUE
+8007,Laptop Backpack,Bags,Urban,109.99,44.00,TRUE
+8008,Cooler Bag 24-Can,Bags,Coolers,49.99,20.00,TRUE

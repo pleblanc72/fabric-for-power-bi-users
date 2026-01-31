@@ -1,0 +1,13 @@
+StoreID,StoreName,City,State,Region,OpenDate,SquareFeet,ManagerName
+S001,Downtown Flagship,Seattle,WA,Pacific Northwest,2018-03-15,15000,Sarah Mitchell
+S002,Eastside Mall,Bellevue,WA,Pacific Northwest,2019-06-01,8500,James Chen
+S003,University District,Seattle,WA,Pacific Northwest,2020-02-20,6000,Maria Rodriguez
+S004,Tacoma Central,Tacoma,WA,Pacific Northwest,2019-11-10,7500,David Kim
+S005,Portland Pearl,Portland,OR,Pacific Northwest,2018-08-22,12000,Emily Watson
+S006,Portland East,Gresham,OR,Pacific Northwest,2021-04-15,6500,Michael Brown
+S007,Eugene Campus,Eugene,OR,Pacific Northwest,2020-09-01,5500,Lisa Park
+S008,Boise Main,Boise,ID,Mountain,2019-03-10,9000,Robert Taylor
+S009,Boise West,Meridian,ID,Mountain,2022-01-20,5000,Jennifer Adams
+S010,Spokane Valley,Spokane,WA,Mountain,2020-06-15,7000,Chris Martinez
+S011,Missoula Downtown,Missoula,MT,Mountain,2021-08-01,5500,Amanda Wilson
+S012,Bend Outdoor,Bend,OR,Pacific Northwest,2022-05-15,6000,Kevin O'Brien
