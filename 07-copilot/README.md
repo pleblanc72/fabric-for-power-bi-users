@@ -20,7 +20,6 @@
 | 05 | [Direct Lake](../05-direct-lake/README.md) | 45 min | |
 | 06 | [Security](../06-security/README.md) | 40 min | |
 | **07** | **Copilot** | **45 min** | ⬅️ You are here |
-| 08 | [Semantic Link](../08-semantic-link-optional/README.md) | 30 min | *(Optional)* |
 
 ---
 
@@ -243,5 +242,5 @@ This section works as a brief intro to AI capabilities for Power BI users curiou
 
 ---
 
-| [← Previous: Security](../06-security/README.md) | [🏠 Home](../README.md) | [Next: Semantic Link →](../08-semantic-link-optional/README.md) |
+| [← Previous: Security](../06-security/README.md) | [🏠 Home](../README.md) | |
 |:--|:--:|--:|

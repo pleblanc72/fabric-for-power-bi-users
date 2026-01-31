@@ -20,7 +20,6 @@
 | 05 | [Direct Lake](../05-direct-lake/README.md) | 45 min | |
 | **06** | **Security** | **40 min** | ⬅️ You are here |
 | 07 | [Copilot](../07-copilot/README.md) | 45 min | |
-| 08 | [Semantic Link](../08-semantic-link-optional/README.md) | 30 min | *(Optional)* |
 
 ---
 
