@@ -27,7 +27,9 @@
 
 | Resource | Description |
 |----------|-------------|
-| [📝 Slide Content](./slides/slides-content.md) | Key concepts from the presentation |
+| [� Slides (PDF)](./pdf/04-dataflows-pipelines.pdf) | Presentation slides |
+| [⬇️ Download PDF](https://github.com/pleblanc72/fabric-for-power-bi-users/raw/main/04-dataflows-pipelines/pdf/04-dataflows-pipelines.pdf) | 1.7 MB · Jan 2026 |
+| [�📝 Slide Content](./slides/slides-content.md) | Key concepts from the presentation |
 | [🎬 Demo Design](./demos/demo-design.md) | Demo script & setup |
 | [🧪 Lab: Dataflow & Pipeline](./lab/dataflow-pipeline.md) | Hands-on exercise |
 
