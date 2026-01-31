@@ -1,5 +1,7 @@
 # Technical Setup: Section 02 Demo Environment
 
+[← Back to Section 2: CI/CD & Git Integration](../README.md)
+
 This guide provides step-by-step instructions to build the Power BI Semantic Model and Report used in the CI/CD & Git Integration demo.
 
 ---

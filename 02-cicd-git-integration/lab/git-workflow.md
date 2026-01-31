@@ -1,5 +1,7 @@
 # Lab: Your First Fabric Git Workflow
 
+[← Back to Section 2: CI/CD & Git Integration](../README.md)
+
 **Duration:** 25 minutes
 
 ---

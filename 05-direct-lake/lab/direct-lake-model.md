@@ -1,5 +1,7 @@
 # Lab: Direct Lake Semantic Model
 
+[← Back to Section 5: Direct Lake](../README.md)
+
 **Duration:** 25 minutes
 
 ---

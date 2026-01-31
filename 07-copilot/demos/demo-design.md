@@ -1,5 +1,7 @@
 # Section 07: Copilot - Demo Design
 
+[← Back to Section 7: Copilot](../README.md)
+
 ## The Story: "The Board Wants What?"
 
 **Continuing from Section 06:** Security is locked down. OneLake Security protects the data across all access points. The VP is satisfied. The solution is complete. Then Friday afternoon happens...

@@ -1,5 +1,7 @@
 # Section 03: Data Centralization - Demo Design
 
+[← Back to Section 3: Data Centralization](../README.md)
+
 ## The Story: "The Budget vs. Reality Problem"
 
 **Continuing from Section 02:** The Friday disaster is behind you. Git saved you from the filter context mistake. But now the VP has a different problem...

@@ -1,5 +1,7 @@
 # Lab: End-to-End Data Pipeline
 
+[← Back to Section 4: Dataflows & Pipelines](../README.md)
+
 **Duration:** 25 minutes
 
 ---

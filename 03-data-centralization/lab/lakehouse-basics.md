@@ -1,5 +1,7 @@
 # Lab: Build Your First Lakehouse
 
+[← Back to Section 3: Data Centralization](../README.md)
+
 **Duration:** 30 minutes
 
 ---

@@ -1,5 +1,7 @@
 # Lab: Copilot & Preparing Your Model for AI
 
+[← Back to Section 7: Copilot](../README.md)
+
 **Duration:** 25 minutes
 
 ---

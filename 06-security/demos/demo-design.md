@@ -1,5 +1,7 @@
 # Section 06: Security in Fabric - Demo Design
 
+[← Back to Section 6: Security](../README.md)
+
 ## The Story: "Who Can See Our ACTUAL Costs?"
 
 **Continuing from Section 05:** Direct Lake is working beautifully. The CFO sees real-time variance data. But then the VP pulls you aside with a concerned look...

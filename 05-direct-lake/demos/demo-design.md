@@ -1,5 +1,7 @@
 # Section 05: Direct Lake Semantic Models - Demo Design
 
+[← Back to Section 5: Direct Lake](../README.md)
+
 ## The Story: "The Report That Refreshes Itself"
 
 **Continuing from Section 04:** Your Dataflow Gen2 pipeline is running weekly, transforming supplier data and landing it in the Lakehouse. The VP is thrilled—margins are accurate, automation is working. But then the CFO walks in...

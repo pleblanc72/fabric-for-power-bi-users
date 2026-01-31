@@ -1,5 +1,7 @@
 # Section 02: CI/CD & Git Integration - Demo Design
 
+[← Back to Section 2: CI/CD & Git Integration](../README.md)
+
 ## The Story: "The Friday Afternoon Disaster"
 
 **Why this works:** Every Power BI developer has lived this nightmare. We're turning their pain into a teaching moment.

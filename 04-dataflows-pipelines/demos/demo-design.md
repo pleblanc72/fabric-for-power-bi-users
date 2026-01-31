@@ -1,5 +1,7 @@
 # Section 04: Dataflows Gen2 & Pipelines - Demo Design
 
+[← Back to Section 4: Dataflows & Pipelines](../README.md)
+
 ## The Story: "The Weekly Variance Report"
 
 **Continuing from Section 03:** You've centralized the actual supplier costs in OneLake. Finance can finally see the variance between budgeted and actual costs. The CFO is thrilled—they spotted $50K in unexpected cost overruns. But now there's a new challenge...

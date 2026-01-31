@@ -1,5 +1,7 @@
 # Lab: Scenario Assessment Exercise
 
+[← Back to Section 1: Strategic Context](../README.md)
+
 **Duration:** 15 minutes
 
 ---

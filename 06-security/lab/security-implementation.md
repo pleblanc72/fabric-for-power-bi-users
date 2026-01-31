@@ -1,5 +1,7 @@
 # Lab: Implementing Security in Microsoft Fabric
 
+[← Back to Section 6: Security](../README.md)
+
 **Duration:** 25 minutes
 
 ---
