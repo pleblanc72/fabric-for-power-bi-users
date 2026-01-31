@@ -1,5 +1,7 @@
 # Data Centralization: OneLake, Lakehouse & Shortcuts
 
+[← Back to Section 3: Data Centralization](../README.md)
+
 > These are the key concepts from the presentation. Use this as a reference guide.
 
 *"One lake. One copy. Zero ETL."*

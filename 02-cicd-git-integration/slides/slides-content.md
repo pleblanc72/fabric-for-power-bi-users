@@ -1,5 +1,7 @@
 # Git Integration: Version Control for Fabric
 
+[← Back to Section 2: CI/CD & Git Integration](../README.md)
+
 > These are the key concepts from the presentation. Use this as a reference guide.
 
 *"The safety net you didn't know you needed"*
