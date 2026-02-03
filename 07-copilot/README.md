@@ -89,31 +89,6 @@ By the end of this section, you will be able to:
 
 ---
 
-## Demo Ideas
-
-### Demo 1: Generate a Report Page with Copilot
-- Open a report in edit mode
-- Use Copilot to create a page
-- Prompt: "Create a sales overview page with revenue trends and top products"
-- Show generated result
-- Discuss what worked and what needs refinement
-
-### Demo 2: DAX Measure Suggestions
-- Open a semantic model
-- Ask Copilot to suggest measures
-- "Create a measure for year-over-year growth"
-- Review the generated DAX
-- Discuss accuracy and best practices
-
-### Demo 3: Notebook Code Generation *(optional)*
-- Open a Fabric notebook
-- Ask Copilot to generate code
-- "Load the Products table from my Lakehouse and show top 10 by revenue"
-- Review generated code
-- Execute and verify
-
----
-
 ## Lab Exercise
 
 **Duration:** 10 minutes

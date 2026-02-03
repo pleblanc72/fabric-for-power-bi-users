@@ -130,28 +130,6 @@ By the end of this section, you will be able to:
 
 ---
 
-## Demo Ideas
-
-### Demo 1: Create a Direct Lake Semantic Model
-- From Lakehouse, create new semantic model
-- Show automatic Direct Lake mode
-- Build a simple report
-- Verify no refresh scheduled
-
-### Demo 2: Performance Comparison
-- Same data, same report
-- Compare: Import model vs DirectQuery vs Direct Lake
-- Show query times
-- Discuss tradeoffs
-
-### Demo 3: Monitor Fallback Behavior
-- Create query that triggers fallback
-- Use Profiler/Monitoring tools
-- Show DirectQuery fallback indicator
-- Fix the issue and verify
-
----
-
 ## Lab Exercise
 
 **Duration:** 20 minutes

@@ -84,25 +84,6 @@ By the end of this section, you will be able to:
 
 ---
 
-## Demo Ideas
-
-### Demo 1: The Security Gap
-- Show RLS working in a report
-- Query via SQL endpoint - bypass RLS!
-- Demonstrate the problem
-
-### Demo 2: Enable OneLake Security
-- Enable security on Lakehouse
-- Create data access roles
-- Restrict table access
-
-### Demo 3: Row and Column Level Security
-- Add row-level filters (region-based)
-- Hide sensitive columns
-- Test across multiple access points
-
----
-
 ## Lab Exercise
 
 **Duration:** 15 minutes

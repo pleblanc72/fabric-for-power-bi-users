@@ -106,30 +106,6 @@ By the end of this section, you will be able to:
 
 ---
 
-## Demo Ideas
-
-### Demo 1: Build a Dataflow Gen2
-- Start from blank
-- Connect to sample CSV/API
-- Apply transformations
-- Configure output to Lakehouse table
-- Run and verify
-
-### Demo 2: Create an Orchestration Pipeline
-- Create pipeline with multiple activities
-- Add Dataflow activity
-- Add Notebook activity (if time)
-- Add conditional logic
-- Run and monitor
-
-### Demo 3: Monitoring and Troubleshooting
-- View run history
-- Examine activity details
-- Find error messages
-- Show lineage view
-
----
-
 ## Lab Exercise
 
 **Duration:** 25 minutes

@@ -177,20 +177,6 @@ Evaluate now, while you have time. The worst migrations happen when you hit a wa
 
 ---
 
-## Demo Ideas
-
-### Demo 1: Capacity Metrics Comparison
-- Show Fabric capacity metrics app
-- Explain CU consumption
-- Compare to Pro license costs
-
-### Demo 2: Cost Calculator Walkthrough
-- Use Azure pricing calculator
-- Model different scenarios
-- Break-even analysis
-
----
-
 ## Lab Exercise
 
 **Duration:** 15 minutes

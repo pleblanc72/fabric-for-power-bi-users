@@ -89,26 +89,6 @@ By the end of this section, you will be able to:
 
 ---
 
-## Demo Ideas
-
-### Demo 1: Connect Workspace to GitHub
-- Create a new Fabric workspace
-- Initialize Git integration
-- Walk through the connection flow
-
-### Demo 2: Make a Change, Commit, Deploy
-- Modify a semantic model measure
-- Commit the change
-- Show the diff in GitHub
-- Explain the TMDL structure
-
-### Demo 3: Rollback Scenario
-- Intentionally break something
-- Use Git history to identify the issue
-- Rollback to previous version
-
----
-
 ## Lab Exercise
 
 **Duration:** 20 minutes

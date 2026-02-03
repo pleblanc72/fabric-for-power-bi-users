@@ -99,32 +99,6 @@ By the end of this section, you will be able to:
 
 ---
 
-## Demo Ideas
-
-### Demo 1: Create a Lakehouse
-- Create new Lakehouse
-- Explore the three sections (Tables, Files, Shortcuts)
-- Upload a CSV file
-- Convert to Delta table
-
-### Demo 2: Add Data via Shortcut
-- Create shortcut to external storage (or another Lakehouse)
-- Show that data isn't copied
-- Query across shortcut and local data
-
-### Demo 3: Query with SQL Endpoint
-- Open the SQL Analytics Endpoint
-- Write T-SQL queries
-- Show the auto-generated schema
-- Compare to traditional Power BI data sources
-
-### Demo 4: Compare to Traditional Power BI
-- Import same data into Power BI Desktop
-- Show file in Lakehouse
-- Discuss: "Where should this data live?"
-
----
-
 ## Lab Exercise
 
 **Duration:** 25 minutes
