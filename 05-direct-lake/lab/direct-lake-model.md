@@ -132,14 +132,15 @@ This is the key difference from Import mode. Let's prove it works!
 
 **Part B: Modify Data in the Lakehouse**
 1. Open a new browser tab
-2. Go to your Lakehouse → **SQL analytics endpoint**
-3. Run this INSERT statement (adjust table/column names to match yours):
-   ```sql
-   INSERT INTO Sales (ProductID, CustomerID, Quantity, Amount, SaleDate)
-   VALUES (1, 1, 100, 9999.00, GETDATE());
+2. Go to your Lakehouse → **Open notebook** → **New notebook**
+3. Run this Spark SQL INSERT statement:
+   ```python
+   %%sql
+   INSERT INTO SalesLakehouse.Sales (ProductID, CustomerID, Quantity, Amount, SaleDate)
+   VALUES (1, 1, 100, 9999.00, current_date());
    ```
    
-   > ⚠️ If INSERT isn't supported, use the Lakehouse UI to upload a small CSV with one new row.
+   > **Note:** UPDATE/INSERT/DELETE operations on Delta tables require Spark SQL in a notebook. The SQL analytics endpoint is read-only for data modifications.
 
 **Part C: See the Change Instantly**
 1. Go back to your report tab

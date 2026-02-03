@@ -47,7 +47,7 @@
 
 ### New for This Section
 - [ ] Ensure tables have enough rows to make the point (at least a few thousand)
-- [ ] Have a way to add/modify data in Lakehouse (notebook or SQL endpoint)
+- [ ] Have a way to add/modify data in Lakehouse (notebook with Spark SQL)
 - [ ] Timer or stopwatch ready for comparing refresh times
 - [ ] (Optional) Existing Import mode semantic model for comparison
 
@@ -55,7 +55,7 @@
 1. Fabric portal (workspace)
 2. Lakehouse open
 3. Power BI report connected to Import model (for comparison)
-4. SQL analytics endpoint or notebook (for live data changes)
+4. Notebook attached to Lakehouse (for live data changes)
 
 ---
 
@@ -209,23 +209,20 @@
 #### Demo 4.2: Modify Data in the Lakehouse
 
 **Do:**
-1. Open the SQL analytics endpoint (or a notebook)
-2. Run a simple UPDATE or INSERT:
-   ```sql
-   -- Add a new sale
-   INSERT INTO Sales (OrderDate, StoreID, ProductID, Quantity, SalesAmount)
-   VALUES ('2026-01-21', 1, 101, 100, 5000.00);
-   ```
-   Or:
-   ```sql
-   -- Update a supplier cost
-   UPDATE SupplierCosts 
+1. Open a notebook attached to your Lakehouse
+2. Run a Spark SQL UPDATE statement:
+   ```python
+   %%sql
+   -- Update a supplier cost to simulate the weekly price change
+   UPDATE SalesLakehouse.SupplierCosts 
    SET SupplierCost = SupplierCost + 0.50 
-   WHERE SupplierID = 1;
+   WHERE ProductID = 1001;
    ```
 
+> **Note:** UPDATE/DELETE operations on Delta tables require Spark SQL. The SQL analytics endpoint is read-only for data modification.
+
 **You say:**
-> "I just added $5,000 in sales. In Import mode, this change would be invisible until the next scheduled refresh—maybe tonight, maybe tomorrow."
+> "I just updated the supplier cost. In Import mode, this change would be invisible until the next scheduled refresh—maybe tonight, maybe tomorrow."
 
 #### Demo 4.3: Refresh the Report
 
@@ -341,7 +338,7 @@ Direct Lake Mode:
 | Default semantic model missing | Create one manually from Lakehouse |
 | Data change doesn't appear | Check automatic updates setting, or manually refresh the semantic model |
 | Query seems slow | Might be DirectQuery fallback—check for unsupported features |
-| Can't modify data in SQL endpoint | Use a notebook with Spark SQL instead |
+| Notebook won't run Spark SQL | Ensure notebook is attached to Lakehouse; check capacity is running |
 
 ---
 
