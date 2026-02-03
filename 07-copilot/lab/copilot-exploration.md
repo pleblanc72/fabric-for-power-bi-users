@@ -84,15 +84,15 @@ Compare this quarter's performance to target
 
 ## Part 2: Prep Data for AI (10 minutes)
 
-### Step 5: Open Prep Data for AI
+### Step 5: Open Prep Data for AI in Power BI Desktop
 
-**In Power BI Service:**
-1. Go to your semantic model
-2. Click **Prep data for AI** (in the toolbar)
+1. Open **Power BI Desktop**
+2. Connect to your semantic model:
+   - Home → **Power BI semantic models**
+   - Select your model and click **Connect**
+3. In the Home ribbon, click **Prep data for AI**
 
-**In Power BI Desktop:**
-1. Open your model
-2. Home ribbon → **Prep data for AI**
+> 💡 **Why Desktop?** Power BI Desktop gives you full model editing capabilities while configuring AI settings. You can rename columns, add descriptions, and configure AI instructions all in one place.
 
 ### Step 6: Simplify the Data Schema (AI Data Schema)
 
@@ -124,30 +124,44 @@ Good names help Copilot understand your data:
 | `Amt` | `SalesAmount` |
 | `Qty` | `Quantity` |
 
-**To rename columns/tables:**
-1. Open your semantic model in edit mode
-2. Right-click a column → **Rename**
-3. Use clear, descriptive names
-4. Avoid abbreviations
+**To rename columns/tables in Power BI Desktop:**
+1. Go to **Model view** (left sidebar)
+2. Select a table, then select a column
+3. In the **Properties** pane, update the **Name** field
+4. Or right-click a column → **Rename**
+5. Use clear, descriptive names
+6. Avoid abbreviations
+
+> 💡 **Pro tip:** You can also use **TMDL view** to bulk-edit names across multiple columns quickly.
 
 ### Step 8: Add Descriptions to Measures
 
 This is **critical** for Copilot to understand your calculations.
 
-1. In the model, select a measure (e.g., `Total Sales`)
-2. In the Properties pane, find **Description**
-3. Add a clear description:
+**In Power BI Desktop Model view:**
+1. Go to **Model view** (left sidebar)
+2. Select a measure (e.g., `Total Sales`) in the Fields pane
+3. In the **Properties** pane, find **Description**
+4. Add a clear description:
 
 **Example descriptions:**
 
 | Measure | Description |
-|---------|-------------|
+|---------|-----------|
 | `Total Sales` | Sum of all sales revenue in dollars. Use for total revenue KPIs. |
 | `Gross Margin %` | (Revenue - Cost) / Revenue. Our standard profitability metric. |
 | `YoY Growth %` | Year-over-year percentage change in sales. Compares to same period last year. |
 | `Customer Count` | Distinct count of customers who made purchases. |
 
-4. Repeat for all important measures
+5. Repeat for all important measures
+
+> 💡 **Pro tip:** In TMDL view, descriptions look like this:
+> ```tmdl
+> measure 'Total Sales'
+>     expression = SUM(Sales[SalesAmount])
+>     description = "Sum of all sales revenue in dollars. Use for total revenue KPIs."
+>     formatString = "$#,##0"
+> ```
 
 ### Step 9: Configure AI Instructions
 

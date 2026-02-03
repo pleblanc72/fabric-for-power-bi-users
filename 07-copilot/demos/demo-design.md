@@ -56,6 +56,7 @@ Alex stares at the screen. 12 visuals. 48 hours. After spending weeks building p
 - [x] Working reports with existing visuals
 
 ### New for This Section
+- [ ] **Power BI Desktop** installed (latest version)
 - [ ] Copilot enabled on your Fabric capacity (tenant admin setting)
 - [ ] A report with some existing visuals (to add to)
 - [ ] A semantic model with:
@@ -64,11 +65,10 @@ Alex stares at the screen. 12 visuals. 48 hours. After spending weeks building p
   - [ ] Missing descriptions on measures
 - [ ] Prep Data for AI features accessible
 
-### Browser Tabs Ready
-1. Power BI report in edit mode (with Copilot pane)
-2. Semantic model in web modeling view (or Desktop Model view)
-3. Prep Data for AI dialog
-4. (Optional) Fabric notebook with Copilot
+### Apps / Tabs Ready
+1. **Power BI Desktop** (connected to semantic model)
+2. Power BI report in edit mode (with Copilot pane)
+3. Prep Data for AI dialog (in Desktop: Home → Prep data for AI)
 
 ### Sample Prompts Ready
 Keep these in a text file for quick copy/paste:
@@ -165,9 +165,9 @@ Intentional fail (unprepared model):
 
 **DEMO STEPS:**
 
-1. **Open Prep Data for AI**
-   - In Power BI Desktop: Home ribbon → "Prep data for AI" button
-   - In Service: Semantic model → "Prep data for AI" button
+1. **Open Prep Data for AI in Power BI Desktop**
+   - Home ribbon → **Prep data for AI** button
+   - (Also available in Service: Semantic model → "Prep data for AI")
 
 2. **Show the three tabs:**
    - **Simplify data schema** (AI Data Schema)

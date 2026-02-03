@@ -50,18 +50,20 @@
 - [x] Sample data with multiple regions/stores
 
 ### New for This Section
+- [ ] **Power BI Desktop** installed (latest version)
+- [ ] **TMDL View preview feature enabled** in Desktop:
+  - File → Options → Preview features → ✅ TMDL View
+- [ ] **XMLA read/write enabled** on workspace (for connecting to remote models)
 - [ ] Enable OneLake Security preview on your Lakehouse
 - [ ] Create test users or use yourself with different scenarios
 - [ ] Have a column that should be hidden (e.g., SupplierCost)
 - [ ] Have a column for filtering (e.g., Region, StoreID)
-- [ ] (Optional) Semantic model with RLS already defined for comparison
 
-### Browser Tabs Ready
-1. Fabric portal (workspace)
-2. Lakehouse with OneLake Security panel
-3. Semantic model settings (for RLS comparison)
+### Browser Tabs / Apps Ready
+1. **Power BI Desktop** (connected to semantic model)
+2. Fabric portal (workspace)
+3. Lakehouse with OneLake Security panel
 4. SQL analytics endpoint (to test security)
-5. (Optional) Notebook to test security
 
 ---
 
@@ -99,15 +101,21 @@
 **You say:**
 > "This is familiar. I create a role, write a DAX filter, and assign users. When Sarah from the Pacific Northwest region views a report, she only sees Pacific Northwest data. Classic RLS."
 
-#### Demo 2.2: Show OLS (Object-Level Security) via TMDL
+#### Demo 2.2: Show OLS (Object-Level Security) via TMDL in Power BI Desktop
 
 **You say:**
-> "RLS filters rows. But what about hiding entire columns? That's Object-Level Security—OLS. Here's the catch: you can't configure OLS in the Power BI web UI. You need to use TMDL or Tabular Editor."
+> "RLS filters rows. But what about hiding entire columns? That's Object-Level Security—OLS. Here's the catch: you can't configure OLS in the Power BI web UI. You need to use TMDL."
 
 **Do:**
-1. Open the Git-synced semantic model folder in VS Code
-2. Navigate to the role definition file (or create one)
-3. Show this TMDL structure:
+1. Open **Power BI Desktop**
+2. Connect to your semantic model:
+   - Home → **Power BI semantic models** (or use OneLake data hub)
+   - Select your **Sales Analytics** model
+   - Click **Connect**
+3. Go to **Model view**
+4. Click the **TMDL view** tab (bottom of screen)
+5. In the TMDL explorer, navigate to **Roles** → expand your role
+6. Show the TMDL structure and add OLS:
 
 ```tmdl
 role 'Regional Manager - Pacific Northwest'
@@ -127,10 +135,12 @@ role 'Regional Manager - Pacific Northwest'
             metadataPermission: none
 ```
 
+7. **Save** (Ctrl+S) — changes sync directly to the service
+
 **You say:**
 > "The `metadataPermission: none` setting hides the column completely—it won't even appear in the field list. The intern can see sales data but not our confidential supplier costs. The column simply doesn't exist for them.
 >
-> This is why Git integration matters! We can define security as code, version control it, and deploy it consistently."
+> Power BI Desktop's TMDL view lets us edit the model definition directly—including security configurations that aren't available in the regular UI."
 
 #### Demo 2.3: The Limitation
 

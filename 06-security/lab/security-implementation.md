@@ -22,6 +22,10 @@ By the end of this lab, you will have:
 - [ ] Direct Lake semantic model from Section 05
 - [ ] Lakehouse with Sales, Products, Stores tables
 - [ ] Fabric workspace with Contributor access or higher
+- [ ] **Power BI Desktop** installed (latest version)
+- [ ] **TMDL View preview feature enabled**:
+  - File → Options → Preview features → ✅ TMDL View
+- [ ] **XMLA read/write enabled** on workspace
 
 ---
 
@@ -79,20 +83,20 @@ You'll implement security at two levels:
 5. Try a measure—it calculates only for filtered data
 6. Click **Stop viewing** when done
 
-### Step 5: Add Object-Level Security via TMDL (Hide Columns)
+### Step 5: Add Object-Level Security via TMDL in Power BI Desktop (Hide Columns)
 
-> **Important:** OLS cannot be configured in the Power BI web UI. You must use TMDL (via Git) or Tabular Editor.
+> **Important:** OLS cannot be configured in the Power BI web UI. You must use TMDL view in Power BI Desktop (or Tabular Editor).
 
-1. Open VS Code with your Git-synced workspace
-2. Navigate to your semantic model folder:
-   ```
-   Sales Analytics.SemanticModel/
-   ├── definition/
-   │   ├── roles/
-   │   │   └── Pacific Northwest Manager.tmdl
-   ```
-3. Open (or create) the role file: `Pacific Northwest Manager.tmdl`
-4. Add OLS configuration to hide sensitive columns:
+1. Open **Power BI Desktop**
+2. Connect to your semantic model:
+   - Home → **Power BI semantic models**
+   - Select your **Sales Analytics** model
+   - Click **Connect**
+3. Go to **Model view** (left sidebar)
+4. Click the **TMDL view** tab (at the bottom of the screen)
+5. In the TMDL explorer (left panel), expand:
+   - **Roles** → **Pacific Northwest Manager**
+6. Edit the role to add OLS configuration:
 
    ```tmdl
    role 'Pacific Northwest Manager'
@@ -112,16 +116,12 @@ You'll implement security at two levels:
                metadataPermission: none
    ```
 
-5. Save the file
-6. Commit and sync to Fabric:
-   ```
-   git add .
-   git commit -m "Add OLS to hide cost columns from regional managers"
-   git push
-   ```
-7. In Fabric, verify the sync completed
+7. Press **Ctrl+S** to save — changes sync directly to the service
+8. Wait for the save confirmation
 
 > 💡 **Tip:** The `metadataPermission: none` setting hides the column completely—it won't appear in the field list for users in this role.
+
+> 💡 **Why TMDL view?** Power BI Desktop's TMDL view gives you full access to model definitions, including advanced security settings not available in the regular UI.
 
 **✅ Checkpoint:** You now have RLS AND OLS in your semantic model. But remember—this only protects report access!
 
