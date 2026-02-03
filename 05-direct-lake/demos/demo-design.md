@@ -116,17 +116,19 @@
 ### ACT 3: "Creating a Direct Lake Semantic Model" (12 minutes)
 
 **You say:**
-> "Here's the beautiful part: when you create a semantic model from a Lakehouse in Fabric, Direct Lake is the DEFAULT. You might already have one without knowing it."
+> "Here's the beautiful part: when you create a semantic model from a Lakehouse in Fabric, Direct Lake is the DEFAULT storage mode. Let me show you."
 
-#### Demo 3.1: Show the Default Semantic Model
+#### Demo 3.1: Create a Direct Lake Semantic Model
 
 **Do:**
 1. Go to your `SalesLakehouse`
-2. Point out the **default semantic model** that was auto-created
-3. Click on it to open
+2. Click **New semantic model** in the toolbar
+3. Name it: `Sales Analytics`
+4. Select the tables to include (Sales, Products, Stores, etc.)
+5. Click **Confirm**
 
 **You say:**
-> "See this? When you created the Lakehouse, Fabric automatically created a semantic model. And it's already Direct Lake. You didn't have to do anything."
+> "That's it. I selected my tables, clicked Confirm, and now I have a semantic model. Notice I didn't have to choose Import or DirectQuery—it's automatically Direct Lake."
 
 #### Demo 3.2: Verify It's Direct Lake
 
@@ -138,19 +140,7 @@
 **You say:**
 > "Look here—every table is Direct Lake. Not Import. Not DirectQuery. Direct Lake. This means it reads directly from the Delta tables in OneLake."
 
-#### Demo 3.3: Create a New Semantic Model (if needed)
-
-**If you want to show creating one from scratch:**
-
-**Do:**
-1. From the Lakehouse, click **New semantic model** (or from workspace, create new)
-2. Select tables to include
-3. Show that Direct Lake is automatic
-
-**You say:**
-> "If I create a new semantic model from this Lakehouse, it defaults to Direct Lake. No special configuration. No Premium-only features to enable. It just works."
-
-#### Demo 3.4: The View Exception - Why the Swap Mattered
+#### Demo 3.3: The View Exception - Why the Swap Mattered
 
 **You say:**
 > "Remember in Section 04, we swapped the view for the Dataflow table? Let me show you exactly why that mattered."
@@ -317,14 +307,14 @@ Direct Lake Mode:
 >
 > You get Import-mode speed with DirectQuery-style freshness. That's Direct Lake.
 >
-> And the best part? You probably already have it. Every Lakehouse creates a Direct Lake semantic model by default."
+> And the best part? Creating one is simple—just click 'New semantic model' from your Lakehouse and select your tables. Direct Lake is automatic."
 
 ---
 
 ## Key Talking Points to Hit
 
 1. **"Best of both worlds"** - Import speed + DirectQuery freshness
-2. **"It's the default"** - Auto-created with every Lakehouse
+2. **"It's automatic"** - Create from Lakehouse, Direct Lake is the default mode
 3. **"Framing, not refreshing"** - Metadata only, seconds not hours
 4. **"Your data stays in OneLake"** - No duplication, single source of truth
 5. **"Same VertiPaq engine"** - Your DAX skills transfer perfectly
@@ -335,7 +325,7 @@ Direct Lake Mode:
 
 | If this happens... | Do this... |
 |-------------------|------------|
-| Default semantic model missing | Create one manually from Lakehouse |
+
 | Data change doesn't appear | Check automatic updates setting, or manually refresh the semantic model |
 | Query seems slow | Might be DirectQuery fallback—check for unsupported features |
 | Notebook won't run Spark SQL | Ensure notebook is attached to Lakehouse; check capacity is running |
@@ -378,7 +368,7 @@ Direct Lake Mode:
 | **Data freshness** | Stale until refresh | Near real-time |
 | **Calculated columns** | ✅ Supported | ❌ Do in Lakehouse |
 | **Capacity required** | Pro or Premium | Fabric capacity |
-| **Default in Fabric** | No | Yes (from Lakehouse) |
+| **Default mode** | No | Yes (when created from Lakehouse) |
 
 ---
 
