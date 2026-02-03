@@ -27,8 +27,6 @@
 
 | Resource | Description |
 |----------|-------------|
-| [📝 Slide Content](./slides/slides-content.md) | Key concepts from the presentation |
-| [🎬 Demo Design](./demos/demo-design.md) | Demo script & setup |
 | [🧪 Lab: Direct Lake Model](./lab/direct-lake-model.md) | Hands-on exercise |
 
 ---

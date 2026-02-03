@@ -20,8 +20,8 @@ Thumbs.db
 # Slides folders (keep private, share PDFs instead)
 **/slides/
 
-# Exception: slides-content.md is public-facing reference material
-!**/slides/slides-content.md
+# Demo folders (instructor content)
+**/demos/
 
 # PowerPoint files (intermediate format)
 **/*.pptx

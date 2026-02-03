@@ -29,9 +29,6 @@
 |----------|-------------|
 | [📊 Slides (PDF)](./pdf/02-cicd-git-integration.pdf) | Presentation slides |
 | [⬇️ Download PDF](https://github.com/pleblanc72/fabric-for-power-bi-users/raw/main/02-cicd-git-integration/pdf/02-cicd-git-integration.pdf) | 2.3 MB · Jan 2026 |
-| [📝 Slide Content](./slides/slides-content.md) | Key concepts from the presentation |
-| [🎬 Demo Design](./demos/demo-design.md) | Demo script & setup |
-| [🔧 Technical Setup](./demos/TECHNICAL-SETUP.md) | Environment setup |
 | [🧪 Lab: Git Workflow](./lab/git-workflow.md) | Hands-on exercise |
 
 ---

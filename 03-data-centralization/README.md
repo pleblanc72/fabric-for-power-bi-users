@@ -29,8 +29,6 @@
 |----------|-------------|
 | [📊 Slides (PDF)](./pdf/03-OneLake.pdf) | Presentation slides |
 | [⬇️ Download PDF](https://github.com/pleblanc72/fabric-for-power-bi-users/raw/main/03-data-centralization/pdf/03-OneLake.pdf) | 3.1 MB · Jan 2026 |
-| [📝 Slide Content](./slides/slides-content.md) | Key concepts from the presentation |
-| [🎬 Demo Design](./demos/demo-design.md) | Demo script & setup |
 | [🧪 Lab: Lakehouse Basics](./lab/lakehouse-basics.md) | Hands-on exercise |
 
 ---
