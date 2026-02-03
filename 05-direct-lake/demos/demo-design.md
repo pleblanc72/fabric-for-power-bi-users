@@ -204,7 +204,7 @@
    ```python
    %%sql
    -- Update a supplier cost to simulate the weekly price change
-   UPDATE SalesLakehouse.SupplierCosts 
+   UPDATE SalesLakehouse.dbo.ProductMarginAnalysis 
    SET SupplierCost = SupplierCost + 0.50 
    WHERE ProductID = 1001;
    ```
