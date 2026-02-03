@@ -27,6 +27,8 @@
 
 | Resource | Description |
 |----------|-------------|
+| [📊 Slides (PDF)](./pdf/05-direct-lake.pdf) | Presentation slides |
+| [⬇️ Download PDF](https://github.com/pleblanc72/fabric-for-power-bi-users/raw/main/05-direct-lake/pdf/05-direct-lake.pdf) | Direct download |
 | [🧪 Lab: Direct Lake Model](./lab/direct-lake-model.md) | Hands-on exercise |
 
 ---
