@@ -99,14 +99,38 @@
 **You say:**
 > "This is familiar. I create a role, write a DAX filter, and assign users. When Sarah from the Pacific Northwest region views a report, she only sees Pacific Northwest data. Classic RLS."
 
-#### Demo 2.2: Show OLS (Object-Level Security)
-
-**Do:**
-1. In the model, show how to hide a column or table from a role
-2. Example: Hide `SupplierCost` column from certain roles
+#### Demo 2.2: Show OLS (Object-Level Security) via TMDL
 
 **You say:**
-> "And with Object-Level Security, I can hide entire columns or tables. The intern can see sales data but not our confidential supplier costs. The column simply doesn't appear in their reports."
+> "RLS filters rows. But what about hiding entire columns? That's Object-Level Security—OLS. Here's the catch: you can't configure OLS in the Power BI web UI. You need to use TMDL or Tabular Editor."
+
+**Do:**
+1. Open the Git-synced semantic model folder in VS Code
+2. Navigate to the role definition file (or create one)
+3. Show this TMDL structure:
+
+```tmdl
+role 'Regional Manager - Pacific Northwest'
+    modelPermission: read
+
+    /// RLS: Filter to Pacific Northwest only
+    tablePermission Stores
+        filterExpression: [Region] = "Pacific Northwest"
+
+    /// OLS: Hide sensitive cost columns
+    tablePermission ProductMarginAnalysis
+        columnPermission SupplierCost
+            metadataPermission: none
+        columnPermission ActualMargin
+            metadataPermission: none
+        columnPermission CostVariance
+            metadataPermission: none
+```
+
+**You say:**
+> "The `metadataPermission: none` setting hides the column completely—it won't even appear in the field list. The intern can see sales data but not our confidential supplier costs. The column simply doesn't exist for them.
+>
+> This is why Git integration matters! We can define security as code, version control it, and deploy it consistently."
 
 #### Demo 2.3: The Limitation
 

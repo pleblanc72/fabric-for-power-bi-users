@@ -79,18 +79,51 @@ You'll implement security at two levels:
 5. Try a measure—it calculates only for filtered data
 6. Click **Stop viewing** when done
 
-### Step 5: Create an Object-Level Security Rule (Hide Columns)
+### Step 5: Add Object-Level Security via TMDL (Hide Columns)
 
-1. Go back to **Manage roles**
-2. Select the **Pacific Northwest Manager** role
-3. Find the **SupplierCosts** table (or the column with cost data)
-4. Set **Column visibility** to hide sensitive columns:
-   - Expand the table
-   - Find `SupplierCost` or `Cost` column
-   - Uncheck to hide it from this role
-5. Click **Save**
+> **Important:** OLS cannot be configured in the Power BI web UI. You must use TMDL (via Git) or Tabular Editor.
 
-**✅ Checkpoint:** You now have RLS in your semantic model. But remember—this only protects report access!
+1. Open VS Code with your Git-synced workspace
+2. Navigate to your semantic model folder:
+   ```
+   Sales Analytics.SemanticModel/
+   ├── definition/
+   │   ├── roles/
+   │   │   └── Pacific Northwest Manager.tmdl
+   ```
+3. Open (or create) the role file: `Pacific Northwest Manager.tmdl`
+4. Add OLS configuration to hide sensitive columns:
+
+   ```tmdl
+   role 'Pacific Northwest Manager'
+       modelPermission: read
+
+       /// RLS: Filter to Pacific Northwest only
+       tablePermission Stores
+           filterExpression: [Region] = "Pacific Northwest"
+
+       /// OLS: Hide sensitive cost columns from this role
+       tablePermission ProductMarginAnalysis
+           columnPermission SupplierCost
+               metadataPermission: none
+           columnPermission ActualMargin
+               metadataPermission: none
+           columnPermission CostVariance
+               metadataPermission: none
+   ```
+
+5. Save the file
+6. Commit and sync to Fabric:
+   ```
+   git add .
+   git commit -m "Add OLS to hide cost columns from regional managers"
+   git push
+   ```
+7. In Fabric, verify the sync completed
+
+> 💡 **Tip:** The `metadataPermission: none` setting hides the column completely—it won't appear in the field list for users in this role.
+
+**✅ Checkpoint:** You now have RLS AND OLS in your semantic model. But remember—this only protects report access!
 
 ---
 
@@ -150,14 +183,19 @@ You'll implement security at two levels:
    ```
 6. Click **Save**
 
-### Step 11: Add Column-Level Security
+### Step 11: Add Column-Level Security (OneLake CLS)
 
-1. Still editing the role, click on the `Sales` table
-2. Click **Manage columns** (or column security option)
-3. Hide these columns:
-   - `CostAmount` (if present)
-   - Any other sensitive columns
-4. Click **Save**
+> **Note:** This is OneLake column-level security (different from semantic model OLS). OneLake CLS is configured in the Lakehouse security panel and enforces across ALL access points.
+
+1. Still editing the role in OneLake Security panel
+2. Click on a table (e.g., `ProductMarginAnalysis`)
+3. Look for **Column permissions** or **Manage columns** option
+4. If available, hide these columns:
+   - `SupplierCost`
+   - `ActualMargin` (if sensitive)
+5. Click **Save**
+
+> ⚠️ **Preview Note:** OneLake column-level security UI may have limited availability. If the option isn't visible, OneLake CLS may require API/SDK configuration. Table-level and row-level security are the most commonly available features.
 
 ### Step 12: Assign Users (Optional)
 
