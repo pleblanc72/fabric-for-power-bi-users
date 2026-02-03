@@ -2,17 +2,18 @@
 
 [← Back to Section 4: Dataflows & Pipelines](../README.md)
 
-## The Story: "The Weekly Variance Report"
+## The Story: "The Weekly Margin Report"
 
-**Continuing from Section 03:** You've centralized the actual supplier costs in OneLake. Finance can finally see the variance between budgeted and actual costs. The CFO is thrilled—they spotted $50K in unexpected cost overruns. But now there's a new challenge...
+**Continuing from Section 03:** You've centralized the actual supplier costs in OneLake. The data is there—but it's in TWO tables. SupplierCosts has the actual costs. Products has the prices. To calculate margins, you need to COMBINE them. And the CFO wants this weekly...
 
-**Scenario:** The CFO calls: *"This variance analysis is gold. But I need it WEEKLY. The supplier is sending updated invoice data every Monday. Can you automate this? And I need to know immediately if the data doesn't arrive—the board meeting is every Tuesday."*
+**Scenario:** The CFO calls: *"I love that we finally have the supplier cost data. But I need to see MARGINS—what we sell for minus what we pay. And I need it WEEKLY. The supplier sends updated costs every Monday. Can you build me a margin analysis table that's ready for the Tuesday board meeting?"*
 
 **The challenge:** 
-- Supplier sends weekly cost updates (actual invoiced costs)
-- You need to transform the data (calculate variance, flag anomalies)
+- SupplierCosts has actual costs (from supplier)
+- Products has prices (our data)
+- You need to MERGE them and calculate margins
 - You need to orchestrate (run on schedule, handle failures)
-- You need to notify (alert Finance if data is missing or variance is high)
+- You need to notify (alert Finance if data is missing)
 - **Enter: Dataflows Gen2 and Pipelines**
 
 ---
@@ -21,20 +22,21 @@
 
 | Act | What Happens | Emotion | Lesson |
 |-----|--------------|---------|--------|
-| 1 | CFO wants weekly variance automation | Recognition | "This is real life" |
-| 2 | Build a Dataflow Gen2 with variance calc | Comfort | "I know Power Query!" |
-| 3 | Output to Lakehouse | Satisfaction | "It just works" |
-| 4 | Create a Pipeline with alerts | Control | "Now I can orchestrate" |
-| 5 | Monitor & troubleshoot | Confidence | "I can see what happened" |
+| 1 | CFO wants weekly margin analysis | Recognition | "This is real life" |
+| 2 | Build a Dataflow Gen2 that merges tables | Comfort | "I know Power Query!" |
+| 3 | Output to Lakehouse as new table | Satisfaction | "It just works" |
+| 4 | Add to semantic model, build report | Payoff | "Now Finance has their margins!" |
+| 5 | Create a Pipeline with alerts | Control | "Now I can orchestrate" |
+| 6 | Monitor & troubleshoot | Confidence | "I can see what happened" |
 
 ---
 
 ## Characters (Continuing from Previous Sections)
 
 - **Alex** - The report developer (you, demoing)
-- **The CFO** - Wants weekly variance reports for Tuesday board meetings
+- **The CFO** - Wants weekly margin analysis for Tuesday board meetings
 - **The Supplier** - Sending weekly updated invoice costs
-- **Finance Team** - Needs alerts when variance exceeds threshold
+- **Finance Team** - Needs the ProductMarginAnalysis table for reporting
 - **IT Manager** - Wants to know when things fail
 
 ---
@@ -44,15 +46,14 @@
 ### Already Done (from Previous Sections)
 - [x] Lakehouse: `SalesLakehouse` with Sales, Products, Stores, Calendar, Targets
 - [x] SupplierCosts table (via Shortcut Transformation or upload)
+- [x] Semantic model with SupplierCosts added (but no margin calculations yet)
 - [x] Git integration connected
 
 ### New for This Section
-- [ ] Sample CSV for transformation: `SupplierCostsV2.csv` with new columns
-- [ ] (Optional) Second data source to combine (e.g., `ExchangeRates.csv`)
 - [ ] Know your email for pipeline notifications
 - [ ] **TEST COPILOT PROMPT** - Run the exact prompt 3+ times to ensure consistent results:
   ```
-  Add a new column called Margin Potential that calculates UnitPrice minus SupplierCost
+  Merge the Products table with this query on ProductID, keeping all columns from both
   ```
 
 ### Browser Tabs Ready
@@ -66,21 +67,21 @@
 
 ---
 
-### ACT 1: "The New Requirements" (3 minutes)
+### ACT 1: "The Gap We Left Behind" (3 minutes)
 
 **You say:**
-> "Remember how we brought in the actual supplier costs? Finance loved seeing the variance between budgeted and actual. They found $50K in cost overruns we didn't know about. Now the CFO wants this weekly..."
+> "Remember where we left off in Section 03? We centralized the supplier cost data in OneLake. It's connected to our semantic model. But we hit a wall..."
 
 **Narrate the scenario:**
-> *"I need this variance report every Tuesday for the board. The supplier sends updated costs Monday morning. Can you automate this? And if the variance on any product exceeds 10%, I want an alert."*
+> *"The CFO asked: 'Great, I can see the supplier costs. But where's my MARGIN? I need to know what we MAKE on each product—sale price minus actual cost. And I need this every week for the board meeting.'"*
 
 **You say:**
-> "Now I have three problems:
-> 1. I need to **transform** the data—calculate variance between budgeted and actual, flag anomalies
-> 2. I need to **orchestrate**—run this every Monday after the supplier file arrives
-> 3. I need to **notify**—alert the CFO if variance exceeds threshold or data is missing
+> "Here's the problem: the data is in TWO tables.
+> - **SupplierCosts** has the actual cost from the supplier
+> - **Products** has our sale price (UnitPrice)
+> - **Margin** = UnitPrice - SupplierCost
 >
-> The Shortcut Transformation is great for 'just land the data.' But when I need logic and alerts? That's where Dataflows Gen2 and Pipelines come in."
+> To calculate margins, I need to MERGE these tables. That's exactly what Dataflows Gen2 are for."
 
 ---
 
@@ -94,58 +95,104 @@
 **Do:**
 1. Go to your workspace
 2. Click **+ New item** → **Dataflow Gen2**
-3. Name it: `Transform Supplier Costs`
+3. Name it: `Build Product Margin Analysis`
 
 **You say:**
 > "First thing you'll notice—this looks exactly like Power Query in Power BI Desktop. Same interface. Same transformations. Same M code under the hood."
 
-#### Demo 2.2: Get Data
+#### Demo 2.2: Get Data - SupplierCosts
 
 **Do:**
 1. Click **Get data** → **More...**
 2. Show the connector list—hundreds of sources!
-3. Select **Lakehouse** (or **Text/CSV** for external file)
+3. Select **Lakehouse**
 4. Connect to your `SalesLakehouse`
-5. Select the `SupplierCosts` table (or upload new CSV)
+5. Select the `SupplierCosts` table
+6. Click **Create**
 
 **You say:**
 > "I can connect to anything—databases, APIs, files, Lakehouse, Warehouse. Same connectors you know from Power BI."
 
-#### Demo 2.3: Apply Transformations (with Copilot!)
+#### Demo 2.3: Get Data - Products
+
+**Do:**
+1. Click **Get data** again
+2. Select **Lakehouse** → `SalesLakehouse`
+3. Select the `Products` table
+4. Click **Create**
 
 **You say:**
-> "Remember that view we created in Section 03? It calculates cost variance and margins. But views are DirectQuery—every report click recalculates. Let's use Copilot to add those same columns to a TABLE, so we get Direct Lake performance."
+> "Now I have both tables in my Dataflow. SupplierCosts and Products. Time to merge them."
 
-##### Step 1: Use Copilot to Add Cost Variance Columns
+#### Demo 2.4: Merge the Tables (The Key Step!)
+
+**You say:**
+> "This is the magic moment. We're going to JOIN these two tables on ProductID—just like a SQL join, but in Power Query."
+
+**Do:**
+1. Select the `SupplierCosts` query
+2. Go to **Home** → **Merge queries** → **Merge queries as new**
+3. Configure the merge:
+   - Left table: `SupplierCosts`
+   - Right table: `Products`
+   - Join column: `ProductID` (click on it in both tables)
+   - Join kind: **Left outer** (all from SupplierCosts, matching from Products)
+4. Click **OK**
+5. Name the new query: `ProductMarginAnalysis`
+
+**You say:**
+> "I just joined two tables. Every supplier cost record now has access to the product's price, category, and other attributes."
+
+#### Demo 2.5: Expand the Products Columns
+
+**Do:**
+1. In the new merged query, find the `Products` column (it shows "Table")
+2. Click the expand button (two arrows)
+3. Select columns to keep:
+   - `UnitPrice` (what we sell for)
+   - `UnitCost` (budgeted cost)
+4. Uncheck "Use original column name as prefix"
+5. Click **OK**
+
+**You say:**
+> "I'm only bringing over UnitPrice and UnitCost—the columns I need for calculations. Why not ProductName and Category? Because we'll JOIN back to the Products table in the semantic model. No need to duplicate data."
+
+#### Demo 2.6: Add Margin Columns (with Copilot!)
+
+**You say:**
+> "Let's use Copilot to add the margin calculations."
 
 **Do:**
 1. Click the **Copilot** button in the Dataflow editor (top ribbon)
 2. In the Copilot pane, type this prompt:
 
    ```
-   Add columns for cost variance. Calculate the difference between SupplierCost and UnitCost as CostVariance, and the percentage variance as CostVariancePct.
+   Add a column called ActualMargin that calculates UnitPrice minus SupplierCost
    ```
 
 3. Press Enter and watch Copilot generate the transformation
 4. Review the result in the preview
-5. Show the **Applied Steps** pane—Copilot added real steps!
 
 **You say:**
-> "Look at that. Natural language to Power Query. And notice—it's not magic. It wrote real M code."
-
-##### Step 2: Use Copilot to Add Margin Columns
+> "There's our margin. Now let's add the percentage."
 
 **Do:**
 1. Type another prompt:
 
    ```
-   Add columns for actual margin. Calculate UnitPrice minus SupplierCost as ActualMargin, and the margin as a percentage of UnitPrice as ActualMarginPct.
+   Add a column called ActualMarginPct that calculates ActualMargin divided by UnitPrice
    ```
 
-2. Show the new columns in the preview
+2. Show the new column in the preview
 
 **You say:**
-> "Now we have the same calculated columns that were in our view—CostVariance, CostVariancePct, ActualMargin, ActualMarginPct. But these will be MATERIALIZED in a table, not computed at query time."
+> "And for good measure, let's see the variance between our budgeted cost and actual supplier cost."
+
+**Do:**
+1. Type:
+   ```
+   Add a column called CostVariance that calculates SupplierCost minus UnitCost
+   ```
 
 ##### Fallback: If Copilot Doesn't Cooperate
 
@@ -157,44 +204,25 @@
 **Do (manual fallback):**
 1. Go to **Add Column** → **Custom Column**
 2. Add each column:
-   - `CostVariance` = `[SupplierCost] - [UnitCost]`
-   - `CostVariancePct` = `([SupplierCost] - [UnitCost]) / [UnitCost]`
    - `ActualMargin` = `[UnitPrice] - [SupplierCost]`
-   - `ActualMarginPct` = `([UnitPrice] - [SupplierCost]) / [UnitPrice]`
+   - `ActualMarginPct` = `[ActualMargin] / [UnitPrice]`
+   - `CostVariance` = `[SupplierCost] - [UnitCost]`
 
 **You say:**
 > "Same result. Copilot is a productivity boost, not a crutch. Always know how to do it yourself."
 
----
-
-##### Step 2: Additional Transformations (Manual)
-
-**Do:**
-1. Filter rows (e.g., only active suppliers):
-   - Click filter on a column
-   - Show the familiar filter UI
-
-2. Rename columns for clarity:
-   - Right-click column → Rename
-
-3. Show the **Applied Steps** pane:
-   - "Every transformation is recorded"
-   - "You can go back and modify any step"
-
-**You say:**
-> "Everything you do in Power Query Desktop, you can do here. Filter, merge, pivot, unpivot, add columns, change types. And now—Copilot can help write it."
-
-#### Demo 2.4: The Gen2 Difference—Data Destinations
+#### Demo 2.7: The Gen2 Difference—Data Destinations
 
 **You say:**
 > "Here's where Gen2 is different from Gen1. Watch this."
 
 **Do:**
-1. In the bottom-right of the query, click **Data destination**
-2. Select **Lakehouse**
-3. Choose your `SalesLakehouse`
-4. Select or create table: `SupplierCostsTransformed`
-5. Configure:
+1. Select the `ProductMarginAnalysis` query
+2. In the bottom-right, click **Data destination**
+3. Select **Lakehouse**
+4. Choose your `SalesLakehouse`
+5. Create new table: `ProductMarginAnalysis`
+6. Configure:
    - **Update method:** Replace (or Append)
    - **Column mapping:** Auto-mapped
 
@@ -208,7 +236,7 @@
 >
 > The data lands exactly where I need it."
 
-#### Demo 2.5: Publish the Dataflow
+#### Demo 2.8: Publish the Dataflow
 
 **Do:**
 1. Click **Publish** (bottom right)
@@ -220,72 +248,77 @@
 
 ---
 
-### ACT 3: "Verify the Output & The Swap" (8 minutes)
+### ACT 3: "Verify & Add to Semantic Model" (8 minutes)
 
-#### Demo 3.1: Verify the Transformed Table
+#### Demo 3.1: Verify the New Table
 
 **Do:**
 1. Go to your Lakehouse
 2. Open the **Tables** section
-3. Find `SupplierCostsTransformed`
+3. Find `ProductMarginAnalysis`
 4. Click to preview the data
-5. Show the new calculated columns: CostVariance, CostVariancePct, ActualMargin, ActualMarginPct
+5. Show the columns: ProductID, SupplierName, SupplierCost, UnitPrice, UnitCost, ActualMargin, ActualMarginPct, CostVariance
 
 **You say:**
-> "There it is. Same calculations as our view, but now they're materialized in a Delta table. This data is ready for Direct Lake."
+> "There it is. Supplier costs merged with pricing data, plus our calculated margins. All materialized as a Delta table—ready for Direct Lake."
 
-#### Demo 3.2: The Swap - View to Table
-
-**You say:**
-> "Remember our variance report from Section 03? It's using the view, which means DirectQuery. Let's swap it for our new table and get Direct Lake performance."
+#### Demo 3.2: Add to the Semantic Model
 
 **Do:**
 1. Open the **Sales Analytics** semantic model
-2. Go to Model view
-3. Show that `vw_ProductMargins` is currently **DirectQuery** mode
-4. Click **Edit tables** or **Manage tables**
-5. Add the new `SupplierCostsTransformed` table
-6. Show that it's **Direct Lake** mode
+2. Click **Edit tables** or **Manage tables**
+3. Add the new `ProductMarginAnalysis` table
+4. Show that it's in **Direct Lake** mode
 
 **You say:**
-> "See the difference? The view is DirectQuery. The table is Direct Lake. Same columns, same calculations—but the table is pre-computed."
+> "Now my semantic model has the margin analysis table. Let's connect it to our star schema."
 
-#### Demo 3.3: Update the Report
+#### Demo 3.3: Create Relationship
 
 **Do:**
-1. Open the variance report
-2. Update visuals to use columns from `SupplierCostsTransformed` instead of `vw_ProductMargins`
-3. (Optional) Hide or remove the view from the model
+1. Create a relationship:
+   - `ProductMarginAnalysis[ProductID]` → `Products[ProductID]`
+2. Show the relationship in the diagram
 
 **You say:**
-> "Same report. Same visuals. Same numbers. But now it's running on Direct Lake instead of DirectQuery.
->
-> The CFO won't notice the difference visually—but they WILL notice the report loads faster, especially as data grows."
+> "The margin table connects to Products. Now I can slice margins by any product attribute, and join to Sales if needed."
 
-#### Demo 3.4: Show the Three Options
+#### Demo 3.4: Build the CFO's Margin Report
+
+**Do:**
+1. Click **New report** from the semantic model
+2. Create visuals:
+   - **Card**: Average margin percentage
+   - **Table**: ProductName, SupplierCost, UnitPrice, ActualMargin, ActualMarginPct
+   - **Bar chart**: Top 10 products by margin (or bottom 10 for problems)
+   - **Column chart**: Margin by Category
+3. Highlight a problem product (low margin)
+
+**You say:**
+> "There it is. The CFO's margin analysis. 'Trail Runner Pro has a 23% margin, but Summit Hiking Boot is only 8%—we might be underpricing it.'
+>
+> This is exactly what Finance needed. Pre-calculated margins, Direct Lake performance, and it updates automatically when the Dataflow runs."
+
+#### Demo 3.5: The Comparison
 
 **Show this comparison:**
 
 | Approach | Where Calculation Happens | Storage Mode | When to Use |
 |----------|---------------------------|--------------|-------------|
-| SQL View | Query time (every click) | DirectQuery | Real-time calcs, quick prototypes |
-| Dataflow Gen2 | ETL time (scheduled) | Direct Lake | Performance-critical reports |
+| DAX Measures | Query time (every click) | Depends on source | Simple calcs, real-time |
+| SQL View | Query time (every click) | DirectQuery | Quick prototypes |
+| Dataflow Gen2 | ETL time (scheduled) | Direct Lake | Performance-critical, merged data |
 | Python/Spark | Notebook execution | Direct Lake | Complex transformations |
 
 **You say:**
-> "Three ways to add calculated columns. All valid. Pick based on your needs:
-> - **View**: Fast to create, real-time, but slower queries
-> - **Dataflow**: Low-code, scheduled, Direct Lake performance
-> - **Python/Spark**: Full control, complex logic, requires coding
->
-> We started with a view because Finance needed the report NOW. Then we optimized with a Dataflow. This is how real projects work—ship fast, improve later."
+> "We chose Dataflow because we needed to MERGE two tables and pre-compute the results. The calculation happens once at ETL time, not every time someone opens the report."
 
 ---
 
 ### ACT 4: "Orchestration with Pipelines" (15 minutes)
 
 **You say:**
-> "The Dataflow works. But I need to run it on a schedule, handle errors, and notify people. That's what Pipelines are for."
+> "The Dataflow works. The report is built. But the CFO wants this WEEKLY—fresh data every Monday morning for the Tuesday board meeting. That's what Pipelines are for."
 
 #### Demo 4.1: Create a Pipeline
 
@@ -303,11 +336,11 @@
 1. In the pipeline canvas, go to **Activities**
 2. Drag **Dataflow** activity onto the canvas
 3. Configure it:
-   - Select your `Transform Supplier Costs` dataflow
+   - Select your `Build Product Margin Analysis` dataflow
 4. Show the activity settings
 
 **You say:**
-> "I've added my Dataflow as an activity. When this pipeline runs, it triggers the Dataflow refresh."
+> "I've added my Dataflow as an activity. When this pipeline runs, it triggers the Dataflow—which merges the tables and updates ProductMarginAnalysis."
 
 #### Demo 4.3: Add a Notification (Office 365 Outlook or Teams)
 
@@ -425,9 +458,11 @@
 
 **You say:**
 > "Let's recap:
-> 1. **Dataflows Gen2** = Power Query in the cloud, outputs to Lakehouse/Warehouse
-> 2. **Pipelines** = Orchestration—schedules, notifications, error handling
-> 3. **Monitoring Hub** = See everything that happened
+> 1. **The Problem**: Data in two tables, needed to merge and calculate margins
+> 2. **Dataflows Gen2** = Power Query in the cloud—merge, transform, output to Lakehouse
+> 3. **The Result**: ProductMarginAnalysis table with pre-calculated margins (Direct Lake)
+> 4. **Pipelines** = Orchestration—schedules, notifications, error handling
+> 5. **Monitoring Hub** = See everything that happened
 >
 > Your Power Query skills transfer directly. The difference is where the data goes and how you automate it."
 
@@ -436,11 +471,12 @@
 ## Key Talking Points to Hit
 
 1. **"You already know this"** - Power Query is Power Query
-2. **"Gen2 outputs anywhere"** - Not stuck in internal storage
-3. **"Copilot writes real M code"** - Not magic, just faster typing
-4. **"Pipelines = Orchestration"** - Dataflows transform, Pipelines coordinate
-5. **"Same engine as Azure Data Factory"** - Enterprise-grade, not a toy
-6. **"Always know the manual way"** - Copilot is a boost, not a crutch
+2. **"Merge queries = SQL JOIN"** - Combine tables visually
+3. **"Gen2 outputs anywhere"** - Not stuck in internal storage
+4. **"Copilot writes real M code"** - Not magic, just faster typing
+5. **"Pipelines = Orchestration"** - Dataflows transform, Pipelines coordinate
+6. **"Same engine as Azure Data Factory"** - Enterprise-grade, not a toy
+7. **"Always know the manual way"** - Copilot is a boost, not a crutch
 
 ---
 
@@ -460,13 +496,13 @@
 
 | Segment | Time |
 |---------|------|
-| Act 1: New Requirements | 3 min |
-| Act 2: Dataflow Gen2 | 12 min |
-| Act 3: Verify Output | 3 min |
-| Act 4: Pipelines | 15 min |
+| Act 1: The Gap We Left Behind | 3 min |
+| Act 2: Dataflow Gen2 (merge + calculate) | 15 min |
+| Act 3: Verify & Add to Semantic Model | 8 min |
+| Act 4: Pipelines | 12 min |
 | Act 5: Monitoring | 7 min |
 | Wrap-up | 2 min |
-| **Total** | **~42 min** |
+| **Total** | **~47 min** |
 
 Leaves time for Q&A and hands-on.
 
@@ -474,14 +510,23 @@ Leaves time for Q&A and hands-on.
 
 ## Sample Artifacts to Create
 
-### SupplierCostsV2.csv (if needed for demo)
+### ProductMarginAnalysis Table (output of Dataflow)
 
-Add new columns to existing SupplierCosts:
-- `LeadTimeDays` - Days to receive order
-- `MinOrderQty` - Minimum order quantity
-- `ContractExpires` - Date contract ends
+Columns:
+- `ProductID` - From SupplierCosts (used for join to Products)
+- `SupplierID` - From SupplierCosts  
+- `SupplierName` - From SupplierCosts
+- `SupplierCost` - From SupplierCosts (actual cost)
+- `LeadTimeDays` - From SupplierCosts
+- `MinOrderQty` - From SupplierCosts
+- `LastUpdated` - From SupplierCosts
+- `UnitPrice` - From Products (merged, for margin calc)
+- `UnitCost` - From Products (merged, budgeted cost)
+- `ActualMargin` - Calculated: UnitPrice - SupplierCost
+- `ActualMarginPct` - Calculated: ActualMargin / UnitPrice
+- `CostVariance` - Calculated: SupplierCost - UnitCost
 
-Already exists in `00-shared/data/SupplierCosts.csv` with these columns.
+**Note:** ProductName, Category, SubCategory come from the Products table via relationship in the semantic model—no need to duplicate here.
 
 ---
 
@@ -490,9 +535,9 @@ Already exists in `00-shared/data/SupplierCosts.csv` with these columns.
 | Section | How This Connects |
 |---------|-------------------|
 | **Section 02** | Dataflows and Pipelines sync to Git! |
-| **Section 03** | Dataflows output to Lakehouse tables we created |
-| **Section 05** | Direct Lake will read these tables directly |
-| **Section 07** | Copilot can help write Power Query transformations |
+| **Section 03** | We merged SupplierCosts + Products from the Lakehouse |
+| **Section 05** | Direct Lake reads ProductMarginAnalysis directly—no import needed |
+| **Section 07** | Copilot helped write Power Query transformations |
 
 ---
 

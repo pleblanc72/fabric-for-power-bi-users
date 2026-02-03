@@ -11,8 +11,9 @@
 **The challenge:** 
 - You have budgeted costs in your Products table (planned at start of year)
 - The supplier just sent ACTUAL invoiced costs (reality)
+- This is SUPPLIER data—costs, lead times, minimum orders—not in our system
 - Where does this external data go? 
-- How do you combine supplier data with your sales data to see the TRUTH?
+- How do you make it available for analysis alongside your sales data?
 
 ---
 
@@ -25,6 +26,7 @@
 | 3 | Upload actual supplier costs, see it become a table | Satisfaction | "That was easy" |
 | 4 | Create a shortcut to shared data | Revelation | "No copying needed!" |
 | 5 | Query with SQL endpoint | Comfort | "I already know this!" |
+| 6 | Add to semantic model, see the gap | Setup | "I need to combine this with Products..." |
 
 ---
 
@@ -353,9 +355,9 @@ ORDER BY ProductCount DESC
 SELECT TOP 100 
     p.ProductName,
     p.Category,
-    p.UnitCost AS OurEstimate,
+    p.UnitCost AS BudgetedCost,
     s.SupplierCost AS ActualCost,
-    p.UnitCost - s.SupplierCost AS CostVariance,
+    s.SupplierCost - p.UnitCost AS CostVariance,
     s.SupplierName,
     s.LeadTimeDays
 FROM Products p
@@ -367,38 +369,14 @@ ORDER BY CostVariance DESC
 **You say:**
 > "Look at that. I just joined our Products table with the new SupplierCosts data. And I can see where our cost estimates were off—some suppliers are cheaper than we thought, some more expensive. This is the analysis the VP wanted."
 
-#### Demo 5.3: Create a View
-
-**Do:**
-1. Create a view:
-```sql
-CREATE VIEW vw_ProductMargins AS
-SELECT 
-    p.ProductID,
-    p.ProductName,
-    p.Category,
-    p.SubCategory,
-    s.SupplierName,
-    s.SupplierCost,
-    p.UnitPrice AS ListPrice,
-    p.UnitPrice - s.SupplierCost AS ActualMargin,
-    (p.UnitPrice - s.SupplierCost) / p.UnitPrice AS ActualMarginPct,
-    s.LeadTimeDays,
-    s.MinOrderQty
-FROM Products p
-LEFT JOIN SupplierCosts s ON p.ProductID = s.ProductID
-```
-2. Show the view in the object explorer
+#### Demo 5.3: The Realization
 
 **You say:**
-> "Now I have a view that calculates margins. My semantic model can point to this view instead of raw tables. The calculation happens in the data layer, not the model. This is proper data architecture."
-
-**Important Callout:**
-> "One thing to know—when we add this view to our semantic model, it will use **DirectQuery** mode, not Direct Lake.
+> "Now here's the thing. I can write this SQL query all day, but my semantic model doesn't have this calculation. The SupplierCosts table has costs. The Products table has prices. But MARGIN? That requires combining them.
 >
-> Why? Direct Lake reads directly from Delta Parquet files. Views require computation at query time—there's no file to read from—so they fall back to DirectQuery.
+> I COULD create a SQL view here... but views in Direct Lake fall back to DirectQuery—slower queries. What I really want is a MATERIALIZED table with these calculations baked in.
 >
-> For now, that's fine—we need to ship this report to Finance TODAY. But in Section 04, we'll use a Dataflow to materialize these same calculations as a table. Then we'll swap out the view for the table and get Direct Lake performance. Best of both worlds: ship fast, optimize later."
+> That's exactly what Dataflows Gen2 are for. We'll tackle that in Section 04."
 
 ---
 
@@ -429,15 +407,15 @@ LEFT JOIN SupplierCosts s ON p.ProductID = s.ProductID
 
 ---
 
-### ACT 8: "Show Finance the Goods" (8 minutes)
+### ACT 8: "Add to the Semantic Model" (8 minutes)
 
 **You say:**
-> "We have the data. We have the view. But Finance asked for a REPORT. Let's deliver."
+> "We have the supplier data in OneLake. Now let's make it available for reporting."
 
-#### Demo 8.1: Add the New Data to Our Existing Semantic Model
+#### Demo 8.1: Add SupplierCosts to the Existing Semantic Model
 
 **You say:**
-> "Remember the Sales Analytics semantic model we've been using? I'm not going to create a whole new model—I'm going to add our new supplier cost data to the existing one."
+> "Remember the Sales Analytics semantic model we've been using? I'm going to add our new supplier cost data to it."
 
 **Do:**
 1. Open the **Sales Analytics** semantic model (the one created in Section 02)
@@ -445,13 +423,12 @@ LEFT JOIN SupplierCosts s ON p.ProductID = s.ProductID
 3. Click **Edit tables** or use the **Add tables** option
 4. Select from the Lakehouse:
    - `SupplierCosts` table
-   - `vw_ProductMargins` view
-5. Add them to the model
+5. Add it to the model
 
 **You say:**
-> "Now my existing model has the new supplier cost data AND the calculated margin view. Same model the team is already using—just enhanced."
+> "Now my existing model has the supplier cost data. Same model the team is already using—just enhanced with new data."
 
-#### Demo 8.2: Create Relationships
+#### Demo 8.2: Create the Relationship
 
 **Do:**
 1. Create a relationship:
@@ -461,29 +438,35 @@ LEFT JOIN SupplierCosts s ON p.ProductID = s.ProductID
 **You say:**
 > "One relationship connects the supplier costs to our product dimension. Now everything is linked."
 
-#### Demo 8.3: Build a Quick Variance Report
-
-**Do:**
-1. Click **New report** from the semantic model (or open existing report and add a page)
-2. Create visuals:
-   - **Card**: Show a product with significant variance
-   - **Table**: ProductName, Budgeted Cost (UnitCost), Actual Cost (SupplierCost), Variance
-   - **Bar chart**: Top 10 products by cost overrun (using the view)
-3. Highlight a problem product
+#### Demo 8.3: Show the Gap
 
 **You say:**
-> "There it is. Finance can immediately see: 'Trail Runner Pro is costing us 15% more than we budgeted. That's $6.75 per unit eating into our margins.'
+> "Let's try to build that margin analysis Finance wants..."
+
+**Do:**
+1. Click **New report** from the semantic model
+2. Try to create a visual showing margins:
+   - Drag ProductName
+   - Drag SupplierCost from SupplierCosts
+   - Drag UnitPrice from Products
+
+**You say:**
+> "I can show the cost and the price side by side. But where's my MARGIN column? Where's the variance calculation?
 >
-> This is exactly what they asked for—budget vs. actual, right in the same model they already use for sales analysis."
+> The data is in TWO tables. SupplierCosts has the cost. Products has the price. To get margin, I need to COMBINE them—merge the tables, calculate the difference, and output a new table.
+>
+> I COULD do this with DAX measures... but that calculates at query time. For a table Finance will hammer every Tuesday before the board meeting? I want that calculation PRE-COMPUTED.
+>
+> That's exactly what Dataflows Gen2 are for."
 
 #### Demo 8.4: The Handoff
 
 **You say:**
-> "Story complete, right?"
-
-*(pause)*
-
-> "Almost. The CFO sees this report Monday morning and says: 'This is gold. But I need it EVERY week. The supplier sends new costs every Monday morning. Can you automate this so it's ready for the Tuesday board meeting?'
+> "So here's where we are: The supplier data is in OneLake. It's connected to our model. But to get the margin analysis Finance actually needs, we need to:
+> 1. Merge SupplierCosts with Products
+> 2. Calculate ActualMargin and MarginPercent
+> 3. Output a new table: `ProductMarginAnalysis`
+> 4. Automate it weekly when the supplier sends new data
 >
 > That's Section 4—Dataflows and Pipelines."
 
@@ -496,11 +479,10 @@ LEFT JOIN SupplierCosts s ON p.ProductID = s.ProductID
 > 1. Uploaded a CSV, converted it to a Delta table
 > 2. Created a shortcut to external data—auto-syncing, no ETL
 > 3. Queried with T-SQL—no Spark needed
-> 4. Created a view for calculated margins
-> 5. Added everything to our existing semantic model
-> 6. Built the variance report Finance asked for
+> 4. Added supplier data to our existing semantic model
+> 5. Identified the gap: we need to COMBINE data to calculate margins
 >
-> From 'Finance needs budget vs. actual' to 'Here's your report' in one section. No data silos. No copies. One source of truth."
+> The data is centralized. It's accessible. But to deliver what Finance really needs—pre-calculated margins, automated weekly—we need Dataflows. That's next."
 
 ---
 
@@ -511,6 +493,7 @@ LEFT JOIN SupplierCosts s ON p.ProductID = s.ProductID
 3. **"Delta format is the foundation"** - Parquet + transaction log = time travel, ACID, open format
 4. **"SQL analytics endpoint = instant SQL access"** - No Spark required for SQL folks
 5. **"Lakehouse ≠ replacing Warehouse"** - They serve different needs, but share the same storage
+6. **"Centralized ≠ ready for reporting"** - Sometimes you need to transform/combine data (that's Dataflows)
 
 ---
 
@@ -554,10 +537,11 @@ This makes the demo more realistic—it's not just about adding cost data (we al
 | Act 3: Upload Data | 8 min |
 | Act 4: Shortcut Transformations (⭐ the wow moment) | 12 min |
 | Act 5: Internal Shortcuts | 3 min |
-| Act 6: SQL Queries | 8 min |
+| Act 6: SQL Queries | 6 min |
 | Act 7: Lakehouse vs Warehouse | 5 min |
+| Act 8: Add to Semantic Model & Show the Gap | 8 min |
 | Wrap-up | 2 min |
-| **Total** | **~45 min** |
+| **Total** | **~51 min** |
 
 ---
 
@@ -577,5 +561,5 @@ After the demo, slides should reinforce:
 | Section | How This Connects |
 |---------|-------------------|
 | **Section 02** | Data is now version-controlled in Git |
-| **Section 04** | Next: Automate data refresh with Dataflows & Pipelines |
-| **Section 05** | Direct Lake will query this Lakehouse data directly |
+| **Section 04** | Next: Use Dataflows to merge Products + SupplierCosts → ProductMarginAnalysis table |
+| **Section 05** | Direct Lake will query the Lakehouse tables directly |
