@@ -108,10 +108,10 @@
 
 **Do:**
 1. Open **Power BI Desktop**
-2. Connect to your semantic model:
+2. Connect to your semantic model for editing:
    - Home → **Power BI semantic models** (or use OneLake data hub)
    - Select your **Sales Analytics** model
-   - Click **Connect**
+   - Click the **Connect dropdown** → choose **Edit**
 3. Go to **Model view**
 4. Click the **TMDL view** tab (bottom of screen)
 5. In the TMDL explorer, navigate to **Roles** → expand your role

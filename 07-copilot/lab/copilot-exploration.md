@@ -95,9 +95,10 @@ Compare this quarter's performance to target
 ### Step 5: Open Prep Data for AI in Power BI Desktop
 
 1. Open **Power BI Desktop**
-2. Connect to your semantic model:
+2. Connect to your semantic model for editing:
    - Home → **Power BI semantic models**
-   - Select your model and click **Connect**
+   - Select your model
+   - Click the **Connect dropdown** → choose **Edit**
 3. In the Home ribbon, click **Prep data for AI**
 
 > 💡 **Why Desktop?** Power BI Desktop gives you full model editing capabilities while configuring AI settings. You can rename columns, add descriptions, and configure AI instructions all in one place.

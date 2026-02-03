@@ -88,10 +88,10 @@ You'll implement security at two levels:
 > **Important:** OLS cannot be configured in the Power BI web UI. You must use TMDL view in Power BI Desktop (or Tabular Editor).
 
 1. Open **Power BI Desktop**
-2. Connect to your semantic model:
+2. Connect to your semantic model for editing:
    - Home → **Power BI semantic models**
    - Select your **Sales Analytics** model
-   - Click **Connect**
+   - Click the **Connect dropdown** → choose **Edit**
 3. Go to **Model view** (left sidebar)
 4. Click the **TMDL view** tab (at the bottom of the screen)
 5. In the TMDL explorer (left panel), expand:
