@@ -27,6 +27,12 @@ Download and install the latest version:
 - [Download Power BI Desktop](https://powerbi.microsoft.com/desktop/)
 - Version required: December 2025 or later
 
+**Enable TMDL View (required for Section 06):**
+1. Open Power BI Desktop
+2. File → Options and settings → Options
+3. Preview features → ✅ **TMDL View**
+4. Click OK and restart Desktop
+
 ### 3. GitHub Account
 
 Required for the CI/CD & Git Integration section:
@@ -113,8 +119,9 @@ Some sections have additional requirements:
 | Section | Additional Prereqs |
 |---------|-------------------|
 | 02 - CI/CD & Git | GitHub account (or Azure DevOps) |
-| 06 - Semantic Link | Basic Python familiarity helpful |
-| 07 - Copilot | Copilot enabled on your Fabric capacity |
+| 05 - Direct Lake | Notebook for data modifications (Spark SQL) |
+| 06 - Security | Power BI Desktop with **TMDL View** enabled; **XMLA read/write** on workspace |
+| 07 - Copilot | Power BI Desktop; Copilot enabled on your Fabric capacity |
 
 > **Note on Copilot:** Some organizations disable Copilot features. If Copilot isn't available, you can still observe the demos but won't be able to do the hands-on labs for that section.
 

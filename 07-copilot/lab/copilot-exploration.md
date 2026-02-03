@@ -6,6 +6,14 @@
 
 ---
 
+## Prerequisites
+
+- [ ] Direct Lake semantic model from Section 05
+- [ ] **Power BI Desktop** installed (latest version)
+- [ ] Copilot enabled on your Fabric capacity (see note below)
+
+---
+
 ## ⚠️ Important Prerequisite
 
 This lab requires Copilot to be enabled on your Fabric capacity. If Copilot is not available, Parts 1-2 become **observation** sections—follow along with the concepts and complete Part 3 (model preparation) which works without Copilot.
