@@ -27,6 +27,8 @@
 
 | Resource | Description |
 |----------|-------------|
+| [📊 Slides (PDF)](./pdf/07-copilot.pdf) | Presentation slides |
+| [⬇️ Download PDF](https://github.com/pleblanc72/fabric-for-power-bi-users/raw/main/07-copilot/pdf/07-copilot.pdf) | Direct download |
 | [🧪 Lab: Copilot Exploration](./lab/copilot-exploration.md) | Hands-on exercise |
 
 ---
