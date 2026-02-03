@@ -173,8 +173,7 @@ This section can be delivered as a standalone session for teams focused on DevOp
 ```
 02-cicd-git-integration/
 ├── README.md           # This file
-├── slides/             # Presentation slides
-├── demos/              # Demo scripts and sample repo structure
+├── pdf/                # Presentation slides (PDF)
 └── lab/                # Hands-on Git workflow exercise
 ```
 

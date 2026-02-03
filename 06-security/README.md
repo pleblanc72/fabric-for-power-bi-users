@@ -175,8 +175,7 @@ See [lab/security-implementation.md](./lab/security-implementation.md) for step-
 ```
 06-security/
 ├── README.md           # This file
-├── slides/             # Presentation slides
-├── demos/              # Demo scripts
+├── pdf/                # Presentation slides (PDF)
 └── lab/                # Security implementation exercise
 ```
 

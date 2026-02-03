@@ -243,8 +243,7 @@ This section works as a brief intro to AI capabilities for Power BI users curiou
 ```
 07-copilot/
 ├── README.md           # This file
-├── slides/             # Presentation slides
-├── demos/              # Demo scripts and prompt examples
+├── pdf/                # Presentation slides (PDF)
 └── lab/                # Copilot exploration exercise
 ```
 

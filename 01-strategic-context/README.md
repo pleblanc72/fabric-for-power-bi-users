@@ -253,7 +253,6 @@ This section can be delivered as a standalone 45-minute talk with no technical p
 ```
 01-strategic-context/
 ├── README.md           # This file
-├── slides/             # Presentation slides
-├── demos/              # Demo scripts and notes
+├── pdf/                # Presentation slides (PDF)
 └── lab/                # Scenario assessment exercise
 ```

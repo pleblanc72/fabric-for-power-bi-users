@@ -201,8 +201,7 @@ This section is foundational for understanding Fabric's data architecture. It ca
 ```
 03-data-centralization/
 ├── README.md           # This file
-├── slides/             # Presentation slides
-├── demos/              # Demo scripts and sample data
+├── pdf/                # Presentation slides (PDF)
 └── lab/                # Lakehouse creation exercise
 ```
 

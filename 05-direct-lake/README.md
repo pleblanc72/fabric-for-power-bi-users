@@ -229,8 +229,7 @@ This section is excellent for organizations hitting model size limits or frustra
 ```
 05-direct-lake/
 ├── README.md           # This file
-├── slides/             # Presentation slides
-├── demos/              # Demo scripts and comparison tests
+├── pdf/                # Presentation slides (PDF)
 └── lab/                # Direct Lake model creation exercise
 ```
 

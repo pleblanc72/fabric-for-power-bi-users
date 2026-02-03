@@ -211,8 +211,7 @@ This section works well for Power BI users who already do ETL with Power Query a
 ```
 04-dataflows-pipelines/
 ├── README.md           # This file
-├── slides/             # Presentation slides
-├── demos/              # Demo scripts and sample data
+├── pdf/                # Presentation slides (PDF)
 └── lab/                # Dataflow and Pipeline exercise
 ```
 
