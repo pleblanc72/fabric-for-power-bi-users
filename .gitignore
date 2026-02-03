@@ -23,6 +23,9 @@ Thumbs.db
 # Demo folders (instructor content)
 **/demos/
 
+# Instructor content folder
+instructor-content/
+
 # PowerPoint files (intermediate format)
 **/*.pptx
 

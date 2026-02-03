@@ -226,14 +226,6 @@ Reinforce the five key messages:
 
 ---
 
-## Standalone Usage
-
-This section can be delivered as a standalone 45-minute talk with no technical prerequisites. It works well as an executive briefing or decision-maker overview.
-
-**Standalone title suggestion:** "Should You Move to Microsoft Fabric? A Decision Framework"
-
----
-
 ## Folder Contents
 
 ```

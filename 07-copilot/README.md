@@ -200,19 +200,6 @@ See [lab/copilot-exploration.md](./lab/copilot-exploration.md) for guided exerci
 
 ---
 
-## Standalone Usage
-
-This section works as a brief intro to AI capabilities for Power BI users curious about Copilot.
-
-**Standalone prerequisites:**
-- Fabric capacity with Copilot enabled
-- Existing report or semantic model
-- Copilot must be permitted by admin
-
-**Standalone title suggestion:** "Copilot for Power BI: AI-Assisted Report and DAX Development"
-
----
-
 ## Folder Contents
 
 ```

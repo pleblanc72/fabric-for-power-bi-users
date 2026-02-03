@@ -169,19 +169,6 @@ See [lab/dataflow-pipeline.md](./lab/dataflow-pipeline.md) for step-by-step inst
 
 ---
 
-## Standalone Usage
-
-This section works well for Power BI users who already do ETL with Power Query and want to understand the Fabric options.
-
-**Standalone prerequisites:**
-- Fabric workspace access
-- Lakehouse (or create one at start of session)
-- Power Query familiarity
-
-**Standalone title suggestion:** "From Power Query to Pipelines: Modern ETL in Microsoft Fabric"
-
----
-
 ## Folder Contents
 
 ```

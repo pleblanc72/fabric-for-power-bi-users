@@ -158,18 +158,6 @@ See [lab/lakehouse-basics.md](./lab/lakehouse-basics.md) for step-by-step instru
 
 ---
 
-## Standalone Usage
-
-This section is foundational for understanding Fabric's data architecture. It can be delivered standalone for teams evaluating data platform options.
-
-**Standalone prerequisites:**
-- Fabric workspace access
-- Basic SQL knowledge
-
-**Standalone title suggestion:** "OneLake, Lakehouses & Warehouses: Fabric's Data Foundation for Power BI Users"
-
----
-
 ## Folder Contents
 
 ```

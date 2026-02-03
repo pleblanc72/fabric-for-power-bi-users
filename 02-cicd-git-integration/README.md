@@ -135,19 +135,6 @@ See [lab/git-workflow.md](./lab/git-workflow.md) for step-by-step instructions.
 
 ---
 
-## Standalone Usage
-
-This section can be delivered as a standalone session for teams focused on DevOps practices.
-
-**Standalone prerequisites:**
-- Fabric workspace access
-- GitHub or Azure DevOps account
-- Basic understanding of Git concepts
-
-**Standalone title suggestion:** "DevOps for Power BI: Git Integration and Deployment Automation in Fabric"
-
----
-
 ## Folder Contents
 
 ```

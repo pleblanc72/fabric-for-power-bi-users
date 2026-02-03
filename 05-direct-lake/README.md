@@ -189,19 +189,6 @@ See [lab/direct-lake-model.md](./lab/direct-lake-model.md) for step-by-step inst
 
 ---
 
-## Standalone Usage
-
-This section is excellent for organizations hitting model size limits or frustrated with refresh times.
-
-**Standalone prerequisites:**
-- Fabric workspace with Lakehouse
-- Data loaded in Lakehouse
-- Basic semantic modeling knowledge
-
-**Standalone title suggestion:** "Direct Lake Deep Dive: Fast Queries on Large Data Without Refresh"
-
----
-
 ## Folder Contents
 
 ```
