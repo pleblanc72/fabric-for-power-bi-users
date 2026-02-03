@@ -27,6 +27,8 @@
 
 | Resource | Description |
 |----------|-------------|
+| [📊 Slides (PDF)](./pdf/06-security.pdf) | Presentation slides |
+| [⬇️ Download PDF](https://github.com/pleblanc72/fabric-for-power-bi-users/raw/main/06-security/pdf/06-security.pdf) | Direct download |
 | [🧪 Lab: Security Implementation](./lab/security-implementation.md) | Hands-on exercise |
 
 ---
