@@ -1,6 +1,22 @@
 # API keys and secrets
 00-shared/scripts/gamma-config.json
 
+# Planning and tracking files
+BACKLOG.md
+brainstorm.md
+context.txt
+gamma-credit-tracker.md
+progress.md
+
+# Data generation scripts
+00-shared/data/generate_sales.py
+
+# Semantic models folder
+00-shared/models/
+
+# Scripts folder
+00-shared/scripts/
+
 # PowerShell
 *.ps1xml
 
